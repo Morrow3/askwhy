@@ -1,4 +1,4 @@
-package askwhypie;
+package fi.askwhypie;
 
 public class AskWhyPie {
 
