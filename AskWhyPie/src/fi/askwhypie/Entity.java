@@ -21,6 +21,7 @@ public class Entity {
     private float speed;
     private int facing;
     private int state;
+    private int health;
     
     private float hitboxUp,
 		  hitboxDown,
@@ -38,6 +39,7 @@ public class Entity {
 	this.height = height;
 	this.speed = 0;
 	this.facing = 0;
+        this.health = 100;
 	this.state = 0;
 	this.hitboxUp = 0;
 	this.hitboxDown = height;

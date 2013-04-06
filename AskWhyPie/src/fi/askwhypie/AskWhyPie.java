@@ -64,7 +64,7 @@ public class AskWhyPie extends BasicGame {
         } else if (GameStatus.isActOne()) {
             handleAct.setMap("data/map/grasslevel.tmx");
             handleAct.drawAct();
-            player.move(0.5f);
+            player.move(1.5f);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 //            container.getInput().addKeyListener(listener);
             player.setFacing(listener.arrowKeyValue());
