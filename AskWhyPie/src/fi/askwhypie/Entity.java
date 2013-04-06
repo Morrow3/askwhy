@@ -236,6 +236,16 @@ public class Entity {
 	this.canHitWall = canHitWall;
     }
     
+    public void setHealth(int health)
+    {
+        this.health = health;
+    }
+    
+    public int getHealth()
+    {
+        return health;
+    }
+    
     
     public boolean checkCollision(Entity entity) {
 	if (!this.canHitPlayer && entity instanceof Player)
