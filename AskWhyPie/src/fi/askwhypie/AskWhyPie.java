@@ -101,11 +101,11 @@ public class AskWhyPie extends BasicGame
  
      public void render(GameContainer container, Graphics g) throws SlickException
      {
-         /*Menu m;
+         Menu m;
          m = new Menu(container, g);
-         m.drawMenu();*/
-         grassMap.draw();
-         sprite.draw((int)x, (int)y);
+         m.drawWholeMenu();
+         //grassMap.draw();
+         //sprite.draw((int)x, (int)y);
      }
  
  }
