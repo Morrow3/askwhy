@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics; 
 import org.newdawn.slick.Image; 
 import org.newdawn.slick.Input; 
+import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException; 
 import org.newdawn.slick.tiled.TiledMap;  
  
@@ -18,6 +19,7 @@ public class AskWhyPie extends BasicGame
 {
     Menu m;
     Beginning b;
+    ListenerForKeyes listener = new ListenerForKeyes();
     
      public AskWhyPie()
      {
@@ -58,7 +60,9 @@ public class AskWhyPie extends BasicGame
             m.drawWholeMenu(g);
          } else if (GameStatus.isBeginActOne()) {
              b.drawBeginnings(g);
-             GameStatus.gameState++;
+             container.getInput().addKeyListener(listener);
+             if (Input.KEY_ENTER == listener.keyValue())
+                 GameStatus.gameState = 2;
          } else if (GameStatus.isActOne()){
              
          }
