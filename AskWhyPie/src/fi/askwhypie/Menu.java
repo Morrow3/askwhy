@@ -37,20 +37,36 @@ public class Menu {
     
     public void drawButtonNewGame() throws SlickException
     {
-        newgame = new Image("data/newgame.jpg");
-        newgame.draw(300, 100, 100, 50);
+        newgame = new Image("data/newgamev1.png");
+        newgame.draw(1000, 100, 250, 100);
     }
     
     public void drawButtonLoadGame() throws SlickException
     {
-        loadgame = new Image("loadgame.jpg");
-        loadgame.draw(300, 200, 100, 50);
+        loadgame = new Image("data/loadgamev1.png");
+        loadgame.draw(1000, 200, 250, 100);
     }
     
     public void drawButtonCredits() throws SlickException
     {
-        credits = new Image("credits.jpg");
-        credits.draw(300, 300, 100, 50);
-        //
+        credits = new Image("data/creditsv1.png");
+        credits.draw(1000, 300, 250, 100);
+       
+    }
+    
+    public void drawButtonExit() throws SlickException
+    {
+        credits = new Image("data/exitv1.png");
+        credits.draw(1000, 400, 250, 100);
+       
+    }
+    
+    public void drawWholeMenu() throws SlickException
+    {
+        drawMenu();
+        drawButtonNewGame();
+        drawButtonLoadGame();
+        drawButtonCredits();
+        drawButtonExit();
     }
 }
