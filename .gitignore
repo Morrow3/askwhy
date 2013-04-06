@@ -1,1 +1,4 @@
+
 *.class
+AskWhyPie/build/classes/*
+AskWhyPie/nbproject/project.properties
