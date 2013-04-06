@@ -10,309 +10,300 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 public class Entity {
+
     public static final int UP = 0;
     public static final int DOWN = 1;
     public static final int LEFT = 2;
     public static final int RIGHT = 3;
-    
     private ArrayList<Animation[]> animations;
-    
     private float x, y, width, height;
     private float speed;
     private int facing;
     private int state;
     private int health;
-    
     private float hitboxUp,
-		  hitboxDown,
-		  hitboxLeft,
-		  hitboxRight;
+            hitboxDown,
+            hitboxLeft,
+            hitboxRight;
     private boolean canHitPlayer,
-		    canHitEnemy,
-		    canHitWall;
-    
-    
+            canHitEnemy,
+            canHitWall;
+
     public Entity(float x, float y, float width, float height) {
-	this.x = x;
-	this.y = y;
-	this.width = width;
-	this.height = height;
-	this.speed = 0;
-	this.facing = 0;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.speed = 0;
+        this.facing = 0;
         this.health = 100;
-	this.state = 0;
-	this.hitboxUp = 0;
-	this.hitboxDown = height;
-	this.hitboxLeft = 0;
-	this.hitboxRight = width;
-	this.canHitPlayer = false;
-	this.canHitEnemy = false;
-	this.canHitWall = false;
-	
-	animations = new ArrayList<Animation[]>();
+        this.state = 0;
+        this.hitboxUp = 0;
+        this.hitboxDown = height;
+        this.hitboxLeft = 0;
+        this.hitboxRight = width;
+        this.canHitPlayer = false;
+        this.canHitEnemy = false;
+        this.canHitWall = false;
+
+        animations = new ArrayList<Animation[]>();
     }
-    
+
     public void setAnimation(Animation anim, int facing, int state) {
-	while (animations.size() <= state)
-	    animations.add(new Animation[4]);
-	
-    animations.get(state)[facing] = anim;
+        while (animations.size() <= state) {
+            animations.add(new Animation[4]);
+        }
+
+        animations.get(state)[facing] = anim;
     }
-    
+
     public Animation getAnimation() {
-	return animations.get(this.state)[facing];
+        return animations.get(this.state)[facing];
     }
-    
+
     public Animation getAnimation(int facing) {
-	return animations.get(this.state)[facing];
+        return animations.get(this.state)[facing];
     }
-    
+
     public Animation getAnimation(int facing, int state) {
-	return animations.get(state)[facing];
+        return animations.get(state)[facing];
     }
 
     public float getX() {
-	return x;
+        return x;
     }
 
     public void setX(float x) {
-	this.x = x;
+        this.x = x;
     }
-    
+
     public void moveX() {
-	moveX(speed);
+        moveX(speed);
     }
-    
+
     public void moveX(float x) {
-	this.x += x;
+        this.x += x;
     }
-    
+
     public float getY() {
-	return y;
+        return y;
     }
 
     public void setY(float y) {
-	this.y = y;
+        this.y = y;
     }
-    
+
     public void moveY() {
-	moveY(speed);
+        moveY(speed);
     }
-    
+
     public void moveY(float y) {
-	this.y += y;
+        this.y += y;
     }
-    
+
     public void move() {
-	move(speed);
+        move(speed);
     }
-    
+
     public void move(float speed) {
-	switch (facing) {
-	    case UP:
-		moveY(-speed);
-		break;
-	    case DOWN:
-		moveY(speed);
-		break;
-	    case LEFT:
-		moveX(-speed);
-		break;
-	    case RIGHT:
-		moveX(speed);
-		break;
-	}
+        switch (facing) {
+            case UP:
+                moveY(-speed);
+                break;
+            case DOWN:
+                moveY(speed);
+                break;
+            case LEFT:
+                moveX(-speed);
+                break;
+            case RIGHT:
+                moveX(speed);
+                break;
+        }
     }
-    
+
     public float getHeight() {
-	return height;
+        return height;
     }
 
     public void setHeight(float height) {
-	this.height = height;
+        this.height = height;
     }
 
     public float getWidth() {
-	return width;
+        return width;
     }
 
     public void setWidth(float width) {
-	this.width = width;
+        this.width = width;
     }
-    
+
     public float getSpeed() {
-	return speed;
+        return speed;
     }
 
     public void setSpeed(float speed) {
-	this.speed = speed;
+        this.speed = speed;
     }
 
     public int getFacing() {
-	return facing;
+        return facing;
     }
 
     public void setFacing(int facing) {
-	this.facing = facing;
+        this.facing = facing;
     }
-    
+
     public int getState() {
-	return state;
+        return state;
     }
-    
+
     public void setState(int state) {
-	this.state = state;
+        this.state = state;
     }
 
     public float getHitboxDown() {
-	return hitboxDown;
+        return hitboxDown;
     }
 
     public void setHitboxDown(float hitboxDown) {
-	this.hitboxDown = hitboxDown;
+        this.hitboxDown = hitboxDown;
     }
 
     public float getHitboxLeft() {
-	return hitboxLeft;
+        return hitboxLeft;
     }
 
     public void setHitboxLeft(float hitboxLeft) {
-	this.hitboxLeft = hitboxLeft;
+        this.hitboxLeft = hitboxLeft;
     }
 
     public float getHitboxRight() {
-	return hitboxRight;
+        return hitboxRight;
     }
 
     public void setHitboxRight(float hitboxRight) {
-	this.hitboxRight = hitboxRight;
+        this.hitboxRight = hitboxRight;
     }
 
     public float getHitboxUp() {
-	return hitboxUp;
+        return hitboxUp;
     }
 
     public void setHitboxUp(float hitboxUp) {
-	this.hitboxUp = hitboxUp;
+        this.hitboxUp = hitboxUp;
     }
-    
+
     public float getBorderUp() {
-	return y + hitboxUp;
+        return y + hitboxUp;
     }
-    
+
     public float getBorderDown() {
-	return y + hitboxDown;
+        return y + hitboxDown;
     }
-    
+
     public float getBorderLeft() {
-	return x + hitboxLeft;
+        return x + hitboxLeft;
     }
-    
+
     public float getBorderRight() {
-	return x + hitboxRight;
+        return x + hitboxRight;
     }
 
     public boolean isCanHitEnemy() {
-	return canHitEnemy;
+        return canHitEnemy;
     }
 
     public void setCanHitEnemy(boolean canHitEnemy) {
-	this.canHitEnemy = canHitEnemy;
+        this.canHitEnemy = canHitEnemy;
     }
 
     public boolean isCanHitPlayer() {
-	return canHitPlayer;
+        return canHitPlayer;
     }
 
     public void setCanHitPlayer(boolean canHitPlayer) {
-	this.canHitPlayer = canHitPlayer;
+        this.canHitPlayer = canHitPlayer;
     }
 
     public boolean isCanHitWall() {
-	return canHitWall;
+        return canHitWall;
     }
 
     public void setCanHitWall(boolean canHitWall) {
-	this.canHitWall = canHitWall;
+        this.canHitWall = canHitWall;
     }
-    
-    public void setHealth(int health)
-    {
+
+    public void setHealth(int health) {
         this.health = health;
     }
-    
-    public int getHealth()
-    {
+
+    public int getHealth() {
         return health;
     }
-    
-    
+
     public boolean checkCollision(Entity entity) {
-	if (!this.canHitPlayer && entity instanceof Player)
-	    return false;
-	else if (!this.canHitEnemy && entity instanceof Enemy)
-	    return false;
-	
-	
-	
-	float up1 = this.getBorderUp();
-	float down1 = this.getBorderDown();
-	float left1 = this.getBorderLeft();
-	float right1 = this.getBorderRight();
-	
-	float up2 = entity.getBorderUp();
-	float down2 = entity.getBorderDown();
-	float left2 = entity.getBorderLeft();
-	float right2 = entity.getBorderRight();
-	
-	
-	if ((up1 < up2 && up2 < down1) || (up2 < up1 && up1 < down2)) {
-	//    System.out.println("jous");
-	    if ((left1 < left2 && left2 < right1) || (left2 < left1 && left1 < right2))
-		return true;
-	}
-	return false;
+        if (!this.canHitPlayer && entity instanceof Player) {
+            return false;
+        } else if (!this.canHitEnemy && entity instanceof Enemy) {
+            return false;
+        }
+
+
+
+        float up1 = this.getBorderUp();
+        float down1 = this.getBorderDown();
+        float left1 = this.getBorderLeft();
+        float right1 = this.getBorderRight();
+
+        float up2 = entity.getBorderUp();
+        float down2 = entity.getBorderDown();
+        float left2 = entity.getBorderLeft();
+        float right2 = entity.getBorderRight();
+
+
+        if ((up1 < up2 && up2 < down1) || (up2 < up1 && up1 < down2)) {
+            //    System.out.println("jous");
+            if ((left1 < left2 && left2 < right1) || (left2 < left1 && left1 < right2)) {
+                return true;
+            }
+        }
+        return false;
     }
-    
-    
-    
-    
-    
-    
-    
+
     public static Image[] createImageArray(String directory, float rotation) {
-	File file = new File(directory);
-	
-	String[] fileNames = file.list();
-	Image[] images = new Image[fileNames.length];
-	
-	for (int i=0; i<fileNames.length; ++i) {
-	    try {
-		images[i] = new Image(directory+"/"+fileNames[i]);
-		images[i].rotate(rotation);
-	    } catch (SlickException ex) {
-		Logger.getLogger(AskWhyPie.class.getName()).log(Level.SEVERE, null, ex);
-	    }
-	}
-	
-	return images;
+        File file = new File(directory);
+
+        String[] fileNames = file.list();
+        Image[] images = new Image[fileNames.length];
+
+        for (int i = 0; i < fileNames.length; ++i) {
+            try {
+                images[i] = new Image(directory + "/" + fileNames[i]);
+                images[i].rotate(rotation);
+            } catch (SlickException ex) {
+                Logger.getLogger(AskWhyPie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return images;
     }
-    
+
     public static Image[] createImageArray(SpriteSheet sheet, int[][] frames, float rotation) {
-	/* Esimerkki miten voi käyttää tätä metodia
-	Image[] playerUp    = createImageArray(sheet, new int[][]{{0, 3}, {1, 3}, {2, 3}, {1, 3}}, 0);
-	Image[] playerDown  = createImageArray(sheet, new int[][]{{0, 0}, {1, 0}, {2, 0}, {1, 0}}, 0);
-	Image[] playerLeft  = createImageArray(sheet, new int[][]{{0, 1}, {1, 1}, {2, 1}, {1, 1}}, 0);
-	Image[] playerRight = createImageArray(sheet, new int[][]{{0, 2}, {1, 2}, {2, 2}, {1, 2}}, 0);
-	*/
-	
-	Image[] images = new Image[frames[0].length];
-	
-	for (int i=0; i<images.length; ++i) {
-	    images[i] = sheet.getSprite(frames[i][0], frames[i][1]);
-	    images[i].setRotation(rotation);
-	}
-	
-	return images;
+        /* Esimerkki miten voi käyttää tätä metodia
+         Image[] playerUp    = createImageArray(sheet, new int[][]{{0, 3}, {1, 3}, {2, 3}, {1, 3}}, 0);
+         Image[] playerDown  = createImageArray(sheet, new int[][]{{0, 0}, {1, 0}, {2, 0}, {1, 0}}, 0);
+         Image[] playerLeft  = createImageArray(sheet, new int[][]{{0, 1}, {1, 1}, {2, 1}, {1, 1}}, 0);
+         Image[] playerRight = createImageArray(sheet, new int[][]{{0, 2}, {1, 2}, {2, 2}, {1, 2}}, 0);
+         */
+
+        Image[] images = new Image[frames[0].length];
+
+        for (int i = 0; i < images.length; ++i) {
+            images[i] = sheet.getSprite(frames[i][0], frames[i][1]);
+            images[i].setRotation(rotation);
+        }
+
+        return images;
     }
 }

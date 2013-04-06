@@ -2,7 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/joel/askwhy/AskWhyPie/src/fi/askwhypie/AskWhyPie.java</file>
-        <file>file:/home/joel/askwhy/AskWhyPie/src/fi/askwhypie/Menu.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/AskWhyPie.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/Menu.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/MenuListener.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/MenuButton.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/GameStatus.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/Enemy.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/Player.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/Entity.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/Beginning.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/ListenerForKeyes.java</file>
+        <file>file:/Users/ville/git/askwhy/AskWhyPie/src/fi/askwhypie/ActHandler.java</file>
     </open-files>
 </project-private>

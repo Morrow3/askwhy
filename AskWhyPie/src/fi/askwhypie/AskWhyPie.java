@@ -57,13 +57,24 @@ public class AskWhyPie extends BasicGame {
                 player.setSpeed(0.5f);
                 GameStatus.gameState = 2;
             }
-        } else if (GameStatus.isActOne()) {
+        } else if (GameStatus.isAct()) {
             handleAct.setMap("data/map/grasslevel.tmx");
             handleAct.drawAct();
             player.move(1.5f);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
-//            container.getInput().addKeyListener(listener);
-            player.setFacing(listener.arrowKeyValue());
+            if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
+                player.setFacing(listener.arrowKeyValue());
+            if (listener.keyValue() == Input.KEY_X)
+                player.stopTime();
+            if (listener.keyValue() == Input.KEY_Z)
+                player.fireBall();
+            if (listener.keyValue() == Input.KEY_Q)
+                container.exit();
+            if (player.fb != null){
+                g.drawAnimation(player.fb.getAnimation(), player.fb.getX(), player.fb.getY());
+                player.fb.move(1f);
+            }
+            
         }
     }
 }

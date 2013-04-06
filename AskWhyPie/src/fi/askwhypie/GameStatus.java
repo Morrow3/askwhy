@@ -13,7 +13,7 @@ public class GameStatus {
     public static boolean isBeginActOne(){
         return gameState == 1;
     }
-    public static boolean isActOne(){
+    public static boolean isAct(){
         return gameState == 2;
     }
     
