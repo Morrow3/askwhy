@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="47" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="woodenfloor" tilewidth="32" tileheight="32">
+  <image source="woodenfloor.jpg" width="2400" height="2400"/>
+ </tileset>
+ <tileset firstgid="5626" name="stonewalls" tilewidth="32" tileheight="32">
+  <image source="stonewalls.jpg" width="1333" height="2000"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="47">
+  <data encoding="base64" compression="zlib">
+   eJzt1lEOwiAQBND2Et7/Rl5JTT80xgI7M0sB54M0Npbdxy60+7Zt+3Pcb8f1c7zurT72gr/HyIh7Nuf3ffvtX91fMtb8WWdNa61a52p1If6r6h+Jbb/9WX5mbzPOEfxsDe3n/Gj/reBn4tuP+dGzbiY/W/OZ/YrYGX7mvTq7v/ZM9Lz/5VeufU8/Uu+z39H+Ws0fzSnqV4xZ/Vm1bs0BjWf/On71npvJr56/Fru2htn1udLf8r/as2z+9mueU6yj/by/xzeTMm6GH117de6KHurlz+hd++1X+LP3YSm/0fe/og4la2bfjeZX5N77/cfWMcOPrL/Kj67Jyv5I/va3xY340fNAUZcR/GydmDOV8SNnd1a/ov2A+tH5ZvGr57X/ff3X8QD0dG0P
+  </data>
+ </layer>
+</map>
