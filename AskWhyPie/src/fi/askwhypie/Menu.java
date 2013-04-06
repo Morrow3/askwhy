@@ -14,7 +14,7 @@ import org.newdawn.slick.SlickException;
  * @author joni
  */
 public class Menu {
-    private GameContainer gc;
+    private GameContainer container;
     private Graphics g;
     private Image background;
     private Image newgame;
@@ -24,20 +24,20 @@ public class Menu {
     private Image options;
     
 
-    public Menu(GameContainer gc, Graphics g) {
-        this.gc = gc;
+    public Menu(GameContainer container, Graphics g) {
+        this.container = container;
         this.g = g;
     }
     
     public void drawMenu() throws SlickException
     {
-        background = new Image("background.jpg");
-        background.draw(0, 0, gc.getWidth(), gc.getHeight());
+        background = new Image("data/background.jpg");
+        background.draw(0, 0, container.getWidth(), container.getHeight());
     }
     
     public void drawButtonNewGame() throws SlickException
     {
-        newgame = new Image("newgame.jpg");
+        newgame = new Image("data/newgame.jpg");
         newgame.draw(300, 100, 100, 50);
     }
     
