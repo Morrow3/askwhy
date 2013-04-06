@@ -19,12 +19,14 @@ public class AskWhyPie extends BasicGame {
     Player player;
     ListenerForKeyes listener;
     String[] maps;
+    String[] musics;
     int map;
 
     public AskWhyPie() {
         super("AskWhy game");
         listener = new ListenerForKeyes();
         maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
+        musics = new String[]{"data/music/toka.wav", "data/music/kolmas.wav"};
         map = 0;
 
     }
@@ -67,10 +69,16 @@ public class AskWhyPie extends BasicGame {
                 player.fireBall();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
-            if (listener.keyValue() == Input.KEY_D)
+            if (listener.keyValue() == Input.KEY_D) {
                 map = 1;
-            if (listener.keyValue() == Input.KEY_A)
+                handleAct.stopMusic();
+                handleAct.setMusic(musics[map]);
+            }
+            if (listener.keyValue() == Input.KEY_A){
                 map = 0;
+                handleAct.stopMusic();
+                handleAct.setMusic(musics[map]);
+            }
         }
     }
 
@@ -81,6 +89,7 @@ public class AskWhyPie extends BasicGame {
             m.playMenuMusic();
         } else if (GameStatus.isBeginActOne()) {
             m.stopMenuMusic();
+            handleAct.setMusic(musics[map]);
             b.drawBeginnings(g);
         } else if (GameStatus.isAct()) {
             handleAct.setMap(maps[map]);
