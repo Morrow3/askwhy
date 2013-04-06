@@ -1,18 +1,21 @@
 package fi.askwhypie;
 
 public class GameStatus {
-    private static boolean inGameMenu;
-    private static boolean inBeginnings;
+    public static int gameState;
+    
     static {
-        inGameMenu = true;
+        gameState = 0;
     }
-    public static void newGame(){
-        inGameMenu = false;
-        inBeginnings = true;
-    }
+    
 
     public static boolean isInGameMenu() {
-        return inGameMenu;
+        return gameState == 0;
+    }
+    public static boolean isBeginActOne(){
+        return gameState == 1;
+    }
+    public static boolean isActOne(){
+        return gameState == 2;
     }
     
     
