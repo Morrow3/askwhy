@@ -7,6 +7,7 @@ package fi.askwhypie;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -22,11 +23,20 @@ public class Menu {
     private Image quit;
     private Image credits;
     private Image options;
+    private MenuListener ml;
+        
+    
     
 
-    public Menu(GameContainer container, Graphics g) {
+    public Menu(GameContainer container) throws SlickException {
         this.container = container;
-        this.g = g;
+        // this.g = g;
+        ml = new MenuListener(container);
+        container.getInput().addKeyListener(ml);
+        newgame = new Image("data/newgamev1.png");
+        loadgame = new Image("data/loadgamev1.png");
+        quit = new Image("data/exitv1.png");
+        credits = new Image("data/creditsv1.png");
     }
     
     public void drawMenu() throws SlickException
@@ -37,36 +47,64 @@ public class Menu {
     
     public void drawButtonNewGame() throws SlickException
     {
-        newgame = new Image("data/newgamev1.png");
         newgame.draw(1000, 100, 250, 100);
     }
     
     public void drawButtonLoadGame() throws SlickException
     {
-        loadgame = new Image("data/loadgamev1.png");
+
         loadgame.draw(1000, 200, 250, 100);
     }
     
     public void drawButtonCredits() throws SlickException
     {
-        credits = new Image("data/creditsv1.png");
+        
         credits.draw(1000, 300, 250, 100);
        
     }
     
     public void drawButtonExit() throws SlickException
     {
-        credits = new Image("data/exitv1.png");
-        credits.draw(1000, 400, 250, 100);
+        
+        quit.draw(1000, 400, 250, 100);
        
     }
     
-    public void drawWholeMenu() throws SlickException
+    public void drawButton(Image image , int x , int y , boolean big){
+        if (big){
+            image.draw(x, y, 350 , 150);
+        } else {
+            image.draw(x, y, 250 , 100);
+        }
+    }
+    
+    public void drawWholeMenu(Graphics g) throws SlickException
     {
+        
         drawMenu();
-        drawButtonNewGame();
-        drawButtonLoadGame();
-        drawButtonCredits();
-        drawButtonExit();
+        for (int i = 1; i < 5; i++) {
+            if (ml.getSelected() == i){
+                drawButton(getImage(i), 1000, i * 100, true);
+            } else {
+                drawButton(getImage(i), 1000, i * 100, false);
+            }
+            g.drawString(ml.getSelected() + "", 100, 100);
+        }
+    }
+    
+    private Image getImage(int i){
+        if (i == 1){
+            return newgame;
+        }
+        if (i == 2){
+            return loadgame;
+        }
+        if (i == 3){
+            return credits;
+        }
+        if (i == 4){
+            return quit;
+        }
+        return null;
     }
 }
