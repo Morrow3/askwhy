@@ -23,10 +23,10 @@ public class MenuListener implements KeyListener{
             selection--;
         }
 
-        if (i < 0){
-            i = 0;
-        } else if (i > 6){
-            i = 6;
+        if (selection < 1){
+            selection = 5;
+        } else if (selection > 5){
+            selection = 1;
         }
         
     }
