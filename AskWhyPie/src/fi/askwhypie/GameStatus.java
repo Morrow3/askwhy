@@ -15,6 +15,10 @@ public class GameStatus {
         return inGameMenu;
     }
     
+    public static boolean isInBeginnings() {
+        return inBeginnings;
+    }
+    
     
     
 }

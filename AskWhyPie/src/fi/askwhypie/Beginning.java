@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -14,6 +15,7 @@ public class Beginning {
     private GameContainer container;
     private Graphics g;
     //private GameStatus gs;
+    boolean isKeyPressed = false;
     
     String beginningStory = "ACT 1:\n" +
 "You wake up. You notice that you are sleeping in the strong hands of a stuffed \n" +
