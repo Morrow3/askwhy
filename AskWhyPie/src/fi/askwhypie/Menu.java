@@ -77,6 +77,10 @@ public class Menu {
         }
     }
     
+    public void stopMenuMusic() {
+        menuMusic.release();
+    }
+    
     private Image getImage(int i){
         if (i == 1){
             return newgame;
