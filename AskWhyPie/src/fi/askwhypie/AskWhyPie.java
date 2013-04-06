@@ -60,16 +60,10 @@ public class AskWhyPie extends BasicGame
             m.drawWholeMenu(g);
          } else if (GameStatus.isBeginActOne()) {
              b.drawBeginnings(g);
-<<<<<<< HEAD
-             MenuListener ml = new MenuListener(container);
-             int i = Input.KEY_ENTER;
-             g.drawString(i+"", 100, 300);
              //GameStatus.gameState++;
-=======
              container.getInput().addKeyListener(listener);
              if (Input.KEY_ENTER == listener.keyValue())
                  GameStatus.gameState = 2;
->>>>>>> c1ac283cb8923c8b0fb248390b334c80d128a72d
          } else if (GameStatus.isActOne()){
              
          }
