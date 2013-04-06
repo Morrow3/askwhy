@@ -37,6 +37,7 @@ public class Menu {
         loadgame = new Image("data/loadgamev1.png");
         quit = new Image("data/exitv1.png");
         credits = new Image("data/creditsv1.png");
+        options = new Image("data/optionsv1.png");
     }
     
     public void drawMenu() throws SlickException
@@ -58,7 +59,7 @@ public class Menu {
     {
         
         drawMenu();
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 6; i++) {
             if (ml.getSelected() == i){
                 drawButton(getImage(i), 700, i* 100, true);
             } else {
@@ -79,6 +80,9 @@ public class Menu {
             return credits;
         }
         if (i == 4){
+            return options;
+        }
+        if (i == 5){
             return quit;
         }
         return null;
