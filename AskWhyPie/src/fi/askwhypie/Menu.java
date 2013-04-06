@@ -84,9 +84,9 @@ public class Menu {
         drawMenu();
         for (int i = 1; i < 5; i++) {
             if (ml.getSelected() == i){
-                drawButton(getImage(i), 1000, i * 100, true);
+                drawButton(getImage(i), 700, i* 100, true);
             } else {
-                drawButton(getImage(i), 1000, i * 100, false);
+                drawButton(getImage(i), 700, i * 100, false);
             }
             g.drawString(ml.getSelected() + "", 100, 100);
         }
