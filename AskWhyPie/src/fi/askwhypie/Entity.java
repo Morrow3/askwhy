@@ -15,13 +15,22 @@ public class Entity {
     public static final int LEFT = 2;
     public static final int RIGHT = 3;
     
+    private ArrayList<Animation[]> animations;
+    
     private float x, y, width, height;
     private float speed;
     private int facing;
     private int state;
-
+    private int health;
     
-    private ArrayList<Animation[]> animations;
+    private float hitboxUp,
+		  hitboxDown,
+		  hitboxLeft,
+		  hitboxRight;
+    private boolean canHitPlayer,
+		    canHitEnemy,
+		    canHitWall;
+    
     
     public Entity(float x, float y, float width, float height) {
 	this.x = x;
@@ -30,7 +39,15 @@ public class Entity {
 	this.height = height;
 	this.speed = 0;
 	this.facing = 0;
+        this.health = 100;
 	this.state = 0;
+	this.hitboxUp = 0;
+	this.hitboxDown = height;
+	this.hitboxLeft = 0;
+	this.hitboxRight = width;
+	this.canHitPlayer = false;
+	this.canHitEnemy = false;
+	this.canHitWall = false;
 	
 	animations = new ArrayList<Animation[]>();
     }
@@ -43,7 +60,7 @@ public class Entity {
     }
     
     public Animation getAnimation() {
-	return animations.get(this.state)[this.facing];
+	return animations.get(this.state)[facing];
     }
     
     public Animation getAnimation(int facing) {
@@ -146,7 +163,116 @@ public class Entity {
     public void setState(int state) {
 	this.state = state;
     }
+
+    public float getHitboxDown() {
+	return hitboxDown;
+    }
+
+    public void setHitboxDown(float hitboxDown) {
+	this.hitboxDown = hitboxDown;
+    }
+
+    public float getHitboxLeft() {
+	return hitboxLeft;
+    }
+
+    public void setHitboxLeft(float hitboxLeft) {
+	this.hitboxLeft = hitboxLeft;
+    }
+
+    public float getHitboxRight() {
+	return hitboxRight;
+    }
+
+    public void setHitboxRight(float hitboxRight) {
+	this.hitboxRight = hitboxRight;
+    }
+
+    public float getHitboxUp() {
+	return hitboxUp;
+    }
+
+    public void setHitboxUp(float hitboxUp) {
+	this.hitboxUp = hitboxUp;
+    }
     
+    public float getBorderUp() {
+	return y + hitboxUp;
+    }
+    
+    public float getBorderDown() {
+	return y + hitboxDown;
+    }
+    
+    public float getBorderLeft() {
+	return x + hitboxLeft;
+    }
+    
+    public float getBorderRight() {
+	return x + hitboxRight;
+    }
+
+    public boolean isCanHitEnemy() {
+	return canHitEnemy;
+    }
+
+    public void setCanHitEnemy(boolean canHitEnemy) {
+	this.canHitEnemy = canHitEnemy;
+    }
+
+    public boolean isCanHitPlayer() {
+	return canHitPlayer;
+    }
+
+    public void setCanHitPlayer(boolean canHitPlayer) {
+	this.canHitPlayer = canHitPlayer;
+    }
+
+    public boolean isCanHitWall() {
+	return canHitWall;
+    }
+
+    public void setCanHitWall(boolean canHitWall) {
+	this.canHitWall = canHitWall;
+    }
+    
+    public void setHealth(int health)
+    {
+        this.health = health;
+    }
+    
+    public int getHealth()
+    {
+        return health;
+    }
+    
+    
+    public boolean checkCollision(Entity entity) {
+	if (!this.canHitPlayer && entity instanceof Player)
+	    return false;
+	else if (!this.canHitEnemy && entity instanceof Enemy)
+	    return false;
+	
+	
+	
+	float up1 = this.getBorderUp();
+	float down1 = this.getBorderDown();
+	float left1 = this.getBorderLeft();
+	float right1 = this.getBorderRight();
+	
+	float up2 = entity.getBorderUp();
+	float down2 = entity.getBorderDown();
+	float left2 = entity.getBorderLeft();
+	float right2 = entity.getBorderRight();
+	
+	
+	if ((up1 < up2 && up2 < down1) || (up2 < up1 && up1 < down2)) {
+	//    System.out.println("jous");
+	    if ((left1 < left2 && left2 < right1) || (left2 < left1 && left1 < right2))
+		return true;
+	}
+	return false;
+    }
     
     
     

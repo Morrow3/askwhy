@@ -1,15 +1,11 @@
 package fi.askwhypie;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
 
 /**
  *
@@ -64,7 +60,7 @@ public class AskWhyPie extends BasicGame {
         } else if (GameStatus.isActOne()) {
             handleAct.setMap("data/map/grasslevel.tmx");
             handleAct.drawAct();
-            player.move(0.5f);
+            player.move(1.5f);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 //            container.getInput().addKeyListener(listener);
             player.setFacing(listener.arrowKeyValue());

@@ -1,6 +1,5 @@
 package fi.askwhypie;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
@@ -16,6 +15,9 @@ public class Player extends Entity {
     
     public Player(float x, float y) {
 	super(x, y, 32, 64);
+	super.setHitboxUp(super.getHeight() / 2);
+	super.setCanHitWall(true);
+	
 	initPlayer();
     }
     
@@ -37,10 +39,12 @@ public class Player extends Entity {
 	setAnimation(new Animation(playerLeft, 250), Player.LEFT, STATE_WALK);
 	setAnimation(new Animation(playerRight, 250), Player.RIGHT, STATE_WALK);
 	
-	// Kuolinanimaatio tällä hetkellä kaikissa suunnissa 'ylöspäin kävely'
 	setAnimation(new Animation(playerUp, 250), Player.UP, STATE_DIE);
 	setAnimation(new Animation(playerUp, 250), Player.DOWN, STATE_DIE);
 	setAnimation(new Animation(playerUp, 250), Player.LEFT, STATE_DIE);
 	setAnimation(new Animation(playerUp, 250), Player.RIGHT, STATE_DIE);
     }
+    
+    
+
 }
