@@ -15,6 +15,7 @@ public class Beginning {
     private GameContainer container;
     private Graphics g;
     //private GameStatus gs;
+    boolean isKeyPressed = false;
     
     String beginningStory = "ACT 1:\n" +
 "You wake up. You notice that you are sleeping in the strong hands of a stuffed \n" +
