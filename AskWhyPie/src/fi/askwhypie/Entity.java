@@ -54,7 +54,7 @@ public class Entity {
 	while (animations.size() <= state)
 	    animations.add(new Animation[4]);
 	
-	animations.get(state)[facing] = anim;
+    animations.get(state)[facing] = anim;
     }
     
     public Animation getAnimation() {
@@ -261,6 +261,8 @@ public class Entity {
 	}
 	return false;
     }
+    
+    
     
     
     
