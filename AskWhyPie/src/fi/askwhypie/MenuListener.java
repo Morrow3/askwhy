@@ -21,7 +21,10 @@ public class MenuListener implements KeyListener{
             selection++;
         } else if (i == Input.KEY_UP){
             selection--;
+        } else if (i == Input.KEY_ENTER) {
+            MenuButton.buttonAction(selection, container);
         }
+        
 
         if (selection < 1){
             selection = 5;
