@@ -17,10 +17,15 @@ public class AskWhyPie extends BasicGame {
     Beginning b;
     HandleAct handleAct;
     Player player;
-    ListenerForKeyes listener = new ListenerForKeyes();
+    ListenerForKeyes listener;
+    String[] maps;
+    int map;
 
     public AskWhyPie() {
         super("AskWhy game");
+        listener = new ListenerForKeyes();
+        maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
+        map = 0;
 
     }
 
@@ -43,27 +48,16 @@ public class AskWhyPie extends BasicGame {
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-    }
-
-    public void render(GameContainer container, Graphics g) throws SlickException {
-
-        if (GameStatus.isInGameMenu()) {
-            m.drawWholeMenu(g);
-        } else if (GameStatus.isBeginActOne()) {
-            b.drawBeginnings(g);
+        if (GameStatus.isBeginActOne()){
             container.getInput().addKeyListener(listener);
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
                 GameStatus.gameState = 2;
             }
-        } else if (GameStatus.isAct()) {
-            handleAct.setMap("data/map/grasslevel.tmx");
-            handleAct.drawAct();
+        }
+        if (GameStatus.isAct()){
             player.move(1.5f);
-            g.drawString("Player:", 1075, 20);
-            g.drawString(player.getHealth()+" health", 1100, 50 );
-            g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
                 player.setFacing(listener.arrowKeyValue());
             if (listener.keyValue() == Input.KEY_X)
@@ -72,6 +66,22 @@ public class AskWhyPie extends BasicGame {
                 player.fireBall();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
+        }
+    }
+
+    public void render(GameContainer container, Graphics g) throws SlickException {
+
+        if (GameStatus.isInGameMenu()) {
+            m.drawWholeMenu(g);
+        } else if (GameStatus.isBeginActOne()) {
+            b.drawBeginnings(g);
+        } else if (GameStatus.isAct()) {
+            handleAct.setMap(maps[map]);
+            handleAct.drawAct();
+            g.drawString("Player:", 1075, 20);
+            g.drawString(player.getHealth()+" health", 1100, 50 );
+            g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
+            
             if (player.fb != null){
                 g.drawAnimation(player.fb.getAnimation(), player.fb.getX(), player.fb.getY());
                 player.fb.move(5f);
