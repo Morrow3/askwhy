@@ -26,7 +26,7 @@ public class Beginning {
 "\n" +
 "Now, my dear Skeleton, start walking..." +
             "\n" +
-            "Press any key to continue... If you dare :)";
+            "!Press ENTER to continue!";
     
     public Beginning(GameContainer container) throws SlickException
     {
