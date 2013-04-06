@@ -66,6 +66,10 @@ public class AskWhyPie extends BasicGame {
                 player.fireBall();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
+            if (listener.keyValue() == Input.KEY_D)
+                map = 1;
+            if (listener.keyValue() == Input.KEY_A)
+                map = 0;
         }
     }
 
