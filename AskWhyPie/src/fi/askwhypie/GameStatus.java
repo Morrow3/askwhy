@@ -18,10 +18,6 @@ public class GameStatus {
         return gameState == 2;
     }
     
-    public static boolean isInBeginnings() {
-        return inBeginnings;
-    }
-    
     
     
 }
