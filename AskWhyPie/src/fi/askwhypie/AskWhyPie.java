@@ -17,6 +17,7 @@ import org.newdawn.slick.tiled.TiledMap;
 public class AskWhyPie extends BasicGame
 {
     Menu m;
+    GameStatus gs;
  
      public AskWhyPie()
      {
@@ -41,7 +42,8 @@ public class AskWhyPie extends BasicGame
      @Override
      public void init(GameContainer container) throws SlickException
      {
-         m = new Menu(container);
+         gs = new GameStatus();
+         m = new Menu(container , gs);
          
      }
  
@@ -52,9 +54,14 @@ public class AskWhyPie extends BasicGame
      }
      public void render(GameContainer container, Graphics g) throws SlickException
      {
-         m.drawWholeMenu(g);
+         
+         if (gs.isInGameMenu()){
+            m.drawWholeMenu(g);
+         }
          //grassMap.draw();
          //sprite.draw((int)x, (int)y);
      }
+     
+
  
  }

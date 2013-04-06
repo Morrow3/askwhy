@@ -28,10 +28,10 @@ public class Menu {
     
     
 
-    public Menu(GameContainer container) throws SlickException {
+    public Menu(GameContainer container , GameStatus gs) throws SlickException {
         this.container = container;
         // this.g = g;
-        ml = new MenuListener(container);
+        ml = new MenuListener(container , gs);
         container.getInput().addKeyListener(ml);
         newgame = new Image("data/newgamev1.png");
         loadgame = new Image("data/loadgamev1.png");
