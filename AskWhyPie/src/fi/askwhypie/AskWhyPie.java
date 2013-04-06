@@ -53,6 +53,7 @@ public class AskWhyPie extends BasicGame {
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
+                container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
         }
