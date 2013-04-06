@@ -22,7 +22,7 @@ public class Player extends Entity {
     private void initPlayer() {
 	SpriteSheet sheet = null;
 	try {
-	    sheet = new SpriteSheet("data/player/skeleton.png", 32, 64);
+	    sheet = new SpriteSheet("data/entity/player/skeleton.png", 32, 64);
 	} catch (SlickException ex) {
 	    Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
 	}
