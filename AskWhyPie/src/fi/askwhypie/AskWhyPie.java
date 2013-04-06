@@ -19,6 +19,7 @@ public class AskWhyPie extends BasicGame
 {
     Menu m;
     Beginning b;
+    HandleAct handleAct;
     ListenerForKeyes listener = new ListenerForKeyes();
     
      public AskWhyPie()
@@ -46,6 +47,7 @@ public class AskWhyPie extends BasicGame
      {
          m = new Menu(container);
          b = new Beginning(container);
+         handleAct = new HandleAct(container);
      }
  
      @Override
@@ -65,7 +67,8 @@ public class AskWhyPie extends BasicGame
              if (Input.KEY_ENTER == listener.keyValue())
                  GameStatus.gameState = 2;
          } else if (GameStatus.isActOne()){
-             
+             handleAct.setMap("data/map/grasslevel.tmx");
+             handleAct.drawAct();
          }
      }
      
