@@ -28,7 +28,7 @@ public class AskWhyPie extends BasicGame
          super("AskWhy game");
      }
  
-     public static void main(String [] arguments)
+     public static void main(String[] args)
      {
          try
          {
