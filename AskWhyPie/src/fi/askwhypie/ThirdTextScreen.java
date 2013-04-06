@@ -24,7 +24,7 @@ public class ThirdTextScreen {
 "\n" +
 "Get walking!\n" +
 "\n" +
-"!Press ENTER to continue lookin!";
+"!Press ENTER to continue lookin'!";
     
     public ThirdTextScreen(GameContainer container) throws SlickException
     {
