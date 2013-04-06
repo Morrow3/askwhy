@@ -10,7 +10,7 @@ public class MenuListener implements KeyListener{
     
     public MenuListener(GameContainer container) {
         this.container=container;
-        selection = 0;
+        selection = 1;
     }
     
     
