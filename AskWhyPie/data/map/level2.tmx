@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="47" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ground_grass_gen_01" tilewidth="32" tileheight="32">
+  <image source="ground_grass_gen_01.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="bricks_0" tilewidth="32" tileheight="32">
+  <image source="bricks_0.png" width="1024" height="768"/>
+ </tileset>
+ <tileset firstgid="1793" name="stonewalls" tilewidth="32" tileheight="32">
+  <image source="stonewalls.jpg" width="1333" height="2000"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="47">
+  <data encoding="base64" compression="zlib">
+   eJztl9FtwzAMRP0RJO0kHSEz9KtL9CsTdYuuWBhBAEGVyCOPFBJZHwdYkS3r6c6Ucjtt2+d21+10TD34M/Rxzh2fmcfi5/l/L+3r3nv3NqoZ+b3ztaxb650S/z5vRiP4M/2vOSKysPh9ue1lmBmn902M4M/0j9Xij6l/rVoYmduM/bDkz/IsW+9v/6X1l5qB39Ke0f9o/p8zr2sx5n4tScuopmf0/wqOid7H5EFar9n5tX4p/9Z3l8/0uB6ZL9ts/kumUfzlt67xt775SP9rfkt9QPil9UD5e5mPzr/mt9f/Ufyaf6/Ob82/Ze+L5vfImnEm/556WPd79j9kbxjBj3iecf5B+VHNyO85P2Twa6r5I87+3vPTCP5R51+E//ti12z8ljGl+73/F5H8S329vNdtxk/veiFq8TOeSvzsXBf/8/Ij+Uf4Iurfrq/GXFu/Re5/EfxRvnr5JWX7H6kj8O88mqz8lkxb1iqL39KP8qOeMvyes19dAzX+Xl4Yfm89jPKf4W89Y+GPmvfil++T9nwLP7IHaPxR5wELP9pe/Ln8jJj6b+G37P8j+TVfvc+xdfSV+JE8RPEfWX8PSbca
+  </data>
+ </layer>
+</map>
