@@ -61,6 +61,7 @@ public class AskWhyPie extends BasicGame {
             handleAct.setMap("data/map/grasslevel.tmx");
             handleAct.drawAct();
             player.move(1.5f);
+            g.drawString(player.getHealth()+" health", 1100, 50 );
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
                 player.setFacing(listener.arrowKeyValue());
