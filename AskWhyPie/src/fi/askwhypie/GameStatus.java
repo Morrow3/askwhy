@@ -6,7 +6,6 @@ public class GameStatus {
     static {
         gameState = 0;
     }
-    
 
     public static boolean isInGameMenu() {
         return gameState == 0;

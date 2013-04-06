@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -37,5 +38,6 @@ public class Beginning {
     public void drawBeginnings(Graphics g)
     {
         g.drawString(beginningStory, 100, 100);
+        
     }
 }
