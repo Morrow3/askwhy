@@ -279,8 +279,10 @@ public class Entity {
 
         for (int i = 0; i < fileNames.length; ++i) {
             try {
+                if(fileNames[i].contains(".png")){
                 images[i] = new Image(directory + "/" + fileNames[i]);
                 images[i].rotate(rotation);
+                }
             } catch (SlickException ex) {
                 Logger.getLogger(AskWhyPie.class.getName()).log(Level.SEVERE, null, ex);
             }

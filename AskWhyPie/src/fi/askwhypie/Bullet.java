@@ -18,8 +18,9 @@ public class Bullet extends Entity {
     @Override
     public Animation getAnimation() {
 	Animation animation = super.getAnimation(0);
-	
+    
 	for (int i=0; i<animation.getFrameCount(); ++i) {
+        if(animation.getImage(i) == null) continue;
 	    if (getFacing() == UP) {
 		animation.getImage(i).setRotation(180);
 	    } else if (getFacing() == DOWN) {

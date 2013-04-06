@@ -72,7 +72,7 @@ public class AskWhyPie extends BasicGame {
                 container.exit();
             if (player.fb != null){
                 g.drawAnimation(player.fb.getAnimation(), player.fb.getX(), player.fb.getY());
-                player.fb.move(1f);
+                player.fb.move(5f);
             }
             
         }
