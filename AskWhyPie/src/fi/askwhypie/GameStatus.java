@@ -1,17 +1,15 @@
 package fi.askwhypie;
 
 public class GameStatus {
-    private boolean inGameMenu;
-    
-    public GameStatus(){
-        this.inGameMenu = true;
+    private static boolean inGameMenu;
+    static {
+        inGameMenu = true;
     }
-    
-    public void newGame(){
+    public static void newGame(){
         inGameMenu = false;
     }
 
-    public boolean isInGameMenu() {
+    public static boolean isInGameMenu() {
         return inGameMenu;
     }
     

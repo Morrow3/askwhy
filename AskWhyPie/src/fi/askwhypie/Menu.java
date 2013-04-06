@@ -16,7 +16,6 @@ import org.newdawn.slick.SlickException;
  */
 public class Menu {
     private GameContainer container;
-    private Graphics g;
     private Image background;
     private Image newgame;
     private Image loadgame;
@@ -28,10 +27,9 @@ public class Menu {
     
     
 
-    public Menu(GameContainer container , GameStatus gs) throws SlickException {
+    public Menu(GameContainer container) throws SlickException {
         this.container = container;
-        // this.g = g;
-        ml = new MenuListener(container , gs);
+        ml = new MenuListener(container);
         container.getInput().addKeyListener(ml);
         newgame = new Image("data/newgamev1.png");
         loadgame = new Image("data/loadgamev1.png");
