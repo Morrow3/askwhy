@@ -45,30 +45,6 @@ public class Menu {
         background.draw(0, 0, container.getWidth(), container.getHeight());
     }
     
-    public void drawButtonNewGame() throws SlickException
-    {
-        newgame.draw(1000, 100, 250, 100);
-    }
-    
-    public void drawButtonLoadGame() throws SlickException
-    {
-
-        loadgame.draw(1000, 200, 250, 100);
-    }
-    
-    public void drawButtonCredits() throws SlickException
-    {
-        
-        credits.draw(1000, 300, 250, 100);
-       
-    }
-    
-    public void drawButtonExit() throws SlickException
-    {
-        
-        quit.draw(1000, 400, 250, 100);
-       
-    }
     
     public void drawButton(Image image , int x , int y , boolean big){
         if (big){
