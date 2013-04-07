@@ -172,7 +172,7 @@ public class AskWhyPie extends BasicGame {
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
             g.drawString((int) player.pausePower + " paussiPower", 1100, 80);
-	    g.drawString((int)fireballTimer + " fireball", 1100, 120);
+            g.drawString((int)fireballTimer + " fireball", 1100, 110);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
             if (fireball != null) {
