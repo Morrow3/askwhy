@@ -19,7 +19,7 @@ public class AskWhyPie extends BasicGame {
     Beginning b;
     HandleAct handleAct;
     Player player;
-    ArrayList<Enemy> enemy;
+    ArrayList<Enemy> enemies;
     Fireball fireball;
     ListenerForKeyes listener;
     String[] maps;
@@ -30,7 +30,7 @@ public class AskWhyPie extends BasicGame {
         listener = new ListenerForKeyes();
         maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
         map = 0;
-        enemy = new ArrayList<Enemy>();
+        enemies = new ArrayList<Enemy>();
 
     }
 
@@ -59,7 +59,7 @@ public class AskWhyPie extends BasicGame {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
                 for (int i = 0; i < 16; i++) {
-                    enemy.add(new Enemy(512, 386));
+                    enemies.add(new Enemy(512, 386));
                 }
                 container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
@@ -68,6 +68,23 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isAct()) {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
+	    
+	    if (fireball != null) {
+		fireball.move();
+
+		Enemy hittedEnemy = null;
+		
+		for (Enemy enemy : enemies) {
+		    if (fireball.checkCollision(enemy)) {
+			fireball.hits();
+			hittedEnemy = enemy;
+			fireball.setCanHitEnemy(false);
+		    }
+		}
+		if (hittedEnemy != null)
+		    enemies.remove(hittedEnemy);
+	    }
+
 
             if (player.getHealth() <= 0) {
                 GameStatus.gameState = 4;
@@ -83,7 +100,7 @@ public class AskWhyPie extends BasicGame {
                 if (fireball == null || fireball.getState() == 2) {
                     fireball = new Fireball(player);
                 }
-                listener.keyPressed(999, 'i');
+                listener.keyPressed(666, 'i');
             }
             if (listener.keyValue() == Input.KEY_O) {
                 if (fireball != null) {
@@ -133,7 +150,6 @@ public class AskWhyPie extends BasicGame {
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
             if (fireball != null) {
-                fireball.move();
                 boolean success = fireball.draw(g);
 
 //		g.drawLine(fireball.getBorderLeft(), 0, fireball.getBorderLeft(), 1000);
@@ -145,7 +161,7 @@ public class AskWhyPie extends BasicGame {
                     fireball = null;
                 }
             }
-            for (Enemy e : enemy) {
+            for (Enemy e : enemies) {
                 e.draw(g);
 
                 if (!player.getStopTime()) {
@@ -176,7 +192,7 @@ public class AskWhyPie extends BasicGame {
             im.draw(0, 0, container.getWidth(), container.getHeight());
             ko.draw(0,0, 1000, 500);
             if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
-                enemy = new ArrayList<Enemy>();
+                enemies = new ArrayList<Enemy>();
                 handleAct.stopMusic(map);
                 m = new Menu(container);
                 GameStatus.gameState = 0;
