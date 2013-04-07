@@ -58,10 +58,9 @@ public class AskWhyPie extends BasicGame {
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
-                enemy.add(new Enemy(512, 378));
-                enemy.add(new Enemy(512, 400));
-                enemy.add(new Enemy(512, 432));
-                enemy.add(new Enemy(512, 464));
+                for (int i = 0; i < 16; i++){
+                    enemy.add(new Enemy(512, 386));
+                }
                 container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
@@ -70,7 +69,11 @@ public class AskWhyPie extends BasicGame {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
 
-
+            if (player.getHealth() <= 0){
+                handleAct.stopMusic(map);
+                m = new Menu(container);
+                GameStatus.gameState = 0;
+            }
 
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN || listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT) {
                 player.setFacing(listener.arrowKeyValue());
@@ -90,6 +93,7 @@ public class AskWhyPie extends BasicGame {
                 }
             }
             if (listener.keyValue() == Input.KEY_Q) {
+                handleAct.stopMusic(map);
                 container.exit();
             }
             if (listener.keyValue() == Input.KEY_D) {
@@ -139,6 +143,8 @@ public class AskWhyPie extends BasicGame {
                     e.setFacing();
                     e.move(2f);
                     e.checkWallCollision(handleAct.getMap());
+                    if(e.checkCollision(player))
+                        player.setHealth(player.getHealth()-2);
                 }
                 
             }

@@ -31,7 +31,7 @@ public class Menu {
 
     public Menu(GameContainer container) throws SlickException {
         this.container = container;
-        ml = new MenuListener(container);
+        ml = new MenuListener(container, this);
         container.getInput().addKeyListener(ml);
         newgame = new Image("data/newgamev1.png");
         loadgame = new Image("data/loadgamev1.png");
@@ -78,7 +78,7 @@ public class Menu {
     }
     
     public void stopMenuMusic() {
-        menuMusic.release();
+        menuMusic.stop();
     }
     
     private Image getImage(int i){

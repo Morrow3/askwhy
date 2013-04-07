@@ -25,6 +25,7 @@ public class Enemy extends Entity {
         super.setHitboxLeft(super.getHitboxLeft()+10);
         super.setHitboxRight(super.getHitboxRight()-10);
         super.setCanHitWall(true);
+        super.setCanHitPlayer(true);  
         
         initEnemy();
     }

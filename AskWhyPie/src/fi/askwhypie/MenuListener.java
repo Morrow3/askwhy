@@ -7,10 +7,12 @@ import org.newdawn.slick.KeyListener;
 public class MenuListener implements KeyListener{
     private int selection;
     private GameContainer container;
+    private Menu menu;
     
-    public MenuListener(GameContainer container) {
+    public MenuListener(GameContainer container, Menu menu) {
         this.container=container;
         selection = 1;
+        this.menu = menu;
     }
     
     
@@ -22,7 +24,7 @@ public class MenuListener implements KeyListener{
         } else if (i == Input.KEY_UP){
             selection--;
         } else if (i == Input.KEY_ENTER) {
-            MenuButton.buttonAction(selection, container);
+            MenuButton.buttonAction(selection, container, menu);
         }
         
 
