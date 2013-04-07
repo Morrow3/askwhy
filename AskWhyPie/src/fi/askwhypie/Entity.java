@@ -51,8 +51,13 @@ public class Entity {
         animations = new ArrayList<Animation[]>();
     }
     
-    public void draw(Graphics g) {
-	g.drawAnimation(getAnimation(), x, y);
+    public boolean draw(Graphics g) {
+	Animation animation = getAnimation();
+	if (animation != null) {
+	    g.drawAnimation(animation, x, y);
+	    return true;
+	} else
+	    return false;
     }
     
     public void setAnimation(Animation anim, int facing, int state) {

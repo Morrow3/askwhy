@@ -6,12 +6,14 @@ import org.newdawn.slick.Image;
 public class Fireball extends Bullet {
 
     private static final int FRAME_DURATION = 250;
+    private static final float SPEED = 1.5f;
 
     public Fireball(Player player) {
         super(0, 0, 128, 128);
 	super.setFacing(player.getFacing());
         super.setCanHitEnemy(true);
-	super.setState(STATE_FLY);
+	super.setSpeed(SPEED);
+	super.setState(STATE_START);
 	
         initFireball(player);
     }
@@ -54,7 +56,44 @@ public class Fireball extends Bullet {
 	
 	Image[] start = createImageArray("data/entity/fireball/start", 0);
         Image[] fly = createImageArray("data/entity/fireball/loop", 0);
-	super.setAnimation(new Animation(start, FRAME_DURATION, true), STATE_START);
+	Image[] explosion = createImageArray("data/entity/fireball/explosion", 0);
+	super.setAnimation(new Animation(start, FRAME_DURATION / 2, true), STATE_START);
         super.setAnimation(new Animation(fly, FRAME_DURATION, true), STATE_FLY);
+	super.setAnimation(new Animation(explosion, FRAME_DURATION, true), STATE_HIT);
+    }
+    
+    @Override
+    public Animation getAnimation() {
+	Animation animation = super.getAnimation();
+
+	if (getState() == STATE_START && animation.getFrame() == animation.getFrameCount() - 1)
+	    setState(STATE_FLY);
+	
+	if (getState() == STATE_HIT && animation.getFrame() == animation.getFrameCount() - 1)
+	    return null;
+	
+	return animation;
+    }
+    
+    public void fireballHits() {
+	if (getState() != STATE_HIT) {
+	    setSpeed(0f);
+	    setState(STATE_HIT);
+
+	    switch (getFacing()) {
+		case Entity.UP:
+		    moveY(-50);
+		    break;
+		case Entity.DOWN:
+		    moveY(50);
+		    break;
+		case Entity.LEFT:
+		    moveX(-50);
+		    break;
+		case Entity.RIGHT:
+		    moveX(50);
+		    break;
+	    }
+	}
     }
 }

@@ -67,8 +67,13 @@ public class AskWhyPie extends BasicGame {
                 player.setFacing(listener.arrowKeyValue());
             if (listener.keyValue() == Input.KEY_X)
                 player.stopTime();
-            if (listener.keyValue() == Input.KEY_Z)
+            if (listener.keyValue() == Input.KEY_Z) {
                 fireball = new Fireball(player);
+		listener.keyPressed(999, 'i');
+	    }
+	    if (listener.keyValue() == Input.KEY_O)
+		if (fireball != null)
+		    fireball.fireballHits();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
             if (listener.keyValue() == Input.KEY_D) {
@@ -80,6 +85,8 @@ public class AskWhyPie extends BasicGame {
                 map = 0;
             }
         }
+	
+	
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
@@ -98,13 +105,16 @@ public class AskWhyPie extends BasicGame {
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
             
             if (fireball != null){
-                fireball.draw(g);
-                fireball.move(5f);
+                fireball.move();
+                boolean success = fireball.draw(g);
 		
 //		g.drawLine(fireball.getBorderLeft(), 0, fireball.getBorderLeft(), 1000);
 //		g.drawLine(fireball.getBorderRight(), 0, fireball.getBorderRight(), 1000);
 //		g.drawLine(0, fireball.getBorderUp(), 1000, fireball.getBorderUp());
 //		g.drawLine(0, fireball.getBorderDown(), 1000, fireball.getBorderDown());
+		
+		if (!success)
+		    fireball = null;
             }
         } else if (GameStatus.isCredits()) {
             Image im = new Image("data/background.jpg");
