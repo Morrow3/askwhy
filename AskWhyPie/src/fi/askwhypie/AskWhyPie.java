@@ -58,7 +58,7 @@ public class AskWhyPie extends BasicGame {
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
-                for (int i = 0; i < 16; i++){
+                for (int i = 0; i < 16; i++) {
                     enemy.add(new Enemy(512, 386));
                 }
                 container.getInput().removeAllKeyListeners();
@@ -69,7 +69,7 @@ public class AskWhyPie extends BasicGame {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
 
-            if (player.getHealth() <= 0){
+            if (player.getHealth() <= 0) {
                 enemy = new ArrayList<Enemy>();
                 handleAct.stopMusic(map);
                 m = new Menu(container);
@@ -83,7 +83,7 @@ public class AskWhyPie extends BasicGame {
                 player.stopTime();
             }
             if (listener.keyValue() == Input.KEY_Z) {
-                if (fireball == null || fireball.getState() == 2){
+                if (fireball == null || fireball.getState() == 2) {
                     fireball = new Fireball(player);
                 }
                 listener.keyPressed(999, 'i');
@@ -105,6 +105,15 @@ public class AskWhyPie extends BasicGame {
                 handleAct.stopMusic(map);
                 map = 0;
             }
+            if (player.getStopTime()){
+                player.pausePower -= 0.7;
+                if(player.pausePower <= 0){
+                    player.continueTime();
+                }
+            }
+            if (player.pausePower < 100) {
+                player.pausePower += 0.05;
+            }
         }
 
 
@@ -123,6 +132,7 @@ public class AskWhyPie extends BasicGame {
             handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
+            g.drawString((int)player.pausePower + " pausePower", 1100, 80);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
             if (fireball != null) {
@@ -138,16 +148,19 @@ public class AskWhyPie extends BasicGame {
                     fireball = null;
                 }
             }
-            if (!player.getStopTime()){
-                for(Enemy e : enemy){
-                    e.draw(g);
+            for (Enemy e : enemy) {
+                e.draw(g);
+
+                if (!player.getStopTime()) {
                     e.setFacing();
                     e.move(2f);
                     e.checkWallCollision(handleAct.getMap());
-                    if(e.checkCollision(player))
-                        player.setHealth(player.getHealth()-2);
                 }
-                
+                if (e.checkCollision(player)) {
+                    player.setHealth(player.getHealth() - 2);
+                }
+
+
             }
         } else if (GameStatus.isCredits()) {
             Image im = new Image("data/background.jpg");

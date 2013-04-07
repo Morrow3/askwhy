@@ -12,6 +12,7 @@ public class Player extends Entity {
     public static final int STATE_WALK = 0;
     public static final int STATE_DIE = 1;
     private boolean stop;
+    public float pausePower;
     
     public Player(float x, float y) {
 	super(x, y, 32, 64);
@@ -21,6 +22,7 @@ public class Player extends Entity {
 	super.setHitboxRight(super.getHitboxRight()-10);
 	super.setCanHitWall(true);
     stop = false;
+    pausePower = 100;
 	
 	initPlayer();
     }
@@ -51,6 +53,10 @@ public class Player extends Entity {
     public void stopTime(){
         stop = true;
         
+    }
+    
+    public void continueTime(){
+        stop = false;
     }
     public boolean getStopTime(){
         return stop;
