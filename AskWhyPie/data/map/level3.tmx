@@ -6,6 +6,9 @@
  <tileset firstgid="241" name="pubdlcnt" tilewidth="32" tileheight="32">
   <image source="pubdlcnt.png" width="672" height="701"/>
  </tileset>
+ <tileset firstgid="682" name="ladyv2" tilewidth="32" tileheight="32">
+  <image source="ladyv2.png" width="272" height="215"/>
+ </tileset>
  <layer name="Tile Layer 1" width="32" height="24">
   <data encoding="base64" compression="zlib">
    eJzFVm0OgjAUY+ec3AG4g+7aYmKT2vQ95sD4o4nCtvb1fYxapqnuuO2Y/4BKiDT8Ul89gSs04axlAFdoAP99AMw/qoP5Hzva+zfHGMWpHmyCb/n5LMSYea17muAMP3NAh6u9szXA/C+ONfCPvVAtrg56ewS1jzhRAy7XXHtRH0A/3uF/xg9e9cDlgWvU9cEs77E+0qA+9exxeYnizDyN8sR7tNaiGsX67J3Td8Sv+c00uHmxlNwDXh9pUX+jucQatB9akCPtIZ1nOhu38ln/q+x3GrI88P2jMTU5lz3k+uY+dNzgw/5m+DUm9TrKId9dETf7pme4ma9xqi43f9lHnqGtxL3RO79Vl9MCjbyulbw3sf9Ig5t7PB9q8FyfZfU/eof1fCdld0v2/dCD3m8l7j2Gxj+i4Qye3o09hA==
@@ -14,6 +17,11 @@
  <layer name="Tile Layer 3" width="32" height="24">
   <data encoding="base64" compression="zlib">
    eJy1lstOVEEQhivcXIMjuMSEwSUkDCyViyZsUHBYAoo8BhA1JizUAEFZCAFCXMvABmcI1yfAR/KvnKpMUfT0OYNDJV/OpG//33266swwEQ3fEyMZ+l87usDjQHusn9sqhlFpn0yZy/1zjl7wNNAe6+91Hqak/W3KXO73MQiGAu2x/kHjgfc+VsfcRoV64L2/uSeNLB7q3d9vcABK4DDD+GbQIrSCtjr1fJyCM3AOLsy6/slxDP6AHvACvASP/tNHWagEnv2G92ABjIt+EUzL7wHx4T2XRKOZap9X2RHSHw+gfnJUrSfap/MrZpy2sc/OlP2PZPCQM6j+vluv4tbl/h8gb/QXwRJYBmvgFSV1SWvVZ7pZLxXO80/Ow77xENJmfoGC0f8CvoJvYBfMUlKXtFZtSL/WyynzXAerxqvdywfwUTxaP74+/QRbYJtuhuay9mu9fGeee2DHeLV7WZXzXJcztf4bXZ+8123xtSseZ53/WtFEt3PlQYO9xqIddICHlNwpnyt3CV9fjyJju8ETqt4Xri35yPi04P34+noZGd9HSa6rPte1QmT8VQZtXue74SQy5xl4TtVc97mi55j2vWJt/k4syTpWfyWiP0HhXLHnaCnW0D4V77yGz8VNN97ejxm6nSvzlLwXrXd8P7Te+LX0/o6Kd17D56KP0P3w75XfC+cCf+/4DLXehLRXRFu9p4X/XlyDvwF93tOG6PO5+/85HTJ/sw5tjn9vSrT0
+  </data>
+ </layer>
+ <layer name="pie layer" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztzbcNACAQxdAT+49EaAgNYSX+FFyBn+TaZvAUg1lSWZXw/l/1bKqr4fCfei611XH4AwAA/OYCPQMJWw==
   </data>
  </layer>
 </map>
