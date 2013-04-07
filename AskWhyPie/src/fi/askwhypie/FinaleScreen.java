@@ -6,6 +6,7 @@ package fi.askwhypie;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -33,6 +34,13 @@ public class FinaleScreen {
     public void drawFinaleScreen(Graphics g)
     {
         g.drawString(finaleStory, 100, 100);
-        
+	
+	
+	try {
+	    Image image = new Image("data/human parts/dildo.jpg");
+	    g.drawImage(image, (container.getWidth()+image.getWidth())/2, 400);
+	} catch (SlickException ex) {
+	}
+	
     }
 }
