@@ -24,7 +24,7 @@ public class Beginning {
 "\n" +
 "Oh, and you are a skeleton. WTF MAN!?\n" +
 "\n" +
-"The only thing you can find from the lobby is a note that says: FIND THE GOLDEN PIE!\n" +
+"The only thing you can find from the lobby is a note that says: FIND THE LOST SWORD OF POWER AND THE GOLDEN PIE!\n" +
 "\n" +
 "Now, my dear Skeleton, start walking..." +
             "\n" +

@@ -16,11 +16,11 @@ public class FinaleScreen {
     private GameContainer container;
     private Graphics g;
     
-   private String finaleStory = "ACT 5:\n" +
-"There it is! The great Golden Pie! And it's.. it's umm... yea. Well, have \n" +
+   private String finaleStory = "ACT 2:\n" +
+"You found THE LOST SWORD OF POWER, good!\n" +
+          "Now it's time to hunt the GOLDEN PIE! It's umm... yea. Well, have \n" +
 "a look at it yourself..\n" +
 "\n" +
-"Thanks for playing, sucker!\n" +
 "\n" +
 "!Press ENTER to gaze at the legendary Golden Pie!";
     
