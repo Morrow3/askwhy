@@ -9,36 +9,34 @@ public class HandleAct {
 
     GameContainer container;
     TiledMap image;
-    Music music;
+    Music[] musics;
 
-    public HandleAct(GameContainer container){
+    public HandleAct(GameContainer container) throws SlickException{
         this.container = container;
+        musics = new Music[]{new Music("data/music/toka.wav"), new Music("data/music/kolmas.wav")};
     }
     
     public void setMap(String map) throws SlickException{
         image = new TiledMap(map);
     }
 
-    public void drawAct() {
+    public void drawAct(int i) {
         image.render(0, 0);
-        playMusic();
+        playMusic(i);
     }
-    public void setMusic(String musica) throws SlickException{
-        music = new Music(musica);
-    }
-    public Music getMusic(){
-        return music;
-    }
-    
-    public void playMusic() {
-        if(!music.playing())
+   
+    public void playMusic(int i) {
+        if(!musics[i].playing())
         {
-            music.play();
+            musics[i].play();
         }
     }
     
-    public void stopMusic() {
-        music.release();
+    public void stopMusic(int i) {
+        if(musics[i].playing()){
+            musics[i].stop();
+            
+        }
     }
     
 }
