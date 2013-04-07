@@ -38,14 +38,14 @@ public class AskWhyPie extends BasicGame {
         maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
         map = 0;
         enemies = new ArrayList<Enemy>();
-	fireballTimer = 100.0f;
+        fireballTimer = 100.0f;
 
     }
 
     public static void main(String[] args) {
         try {
             AppGameContainer app = new AppGameContainer(new AskWhyPie());
-	    app.setTargetFrameRate(60);
+            app.setTargetFrameRate(60);
             app.setDisplayMode(1312, 768, false);
             app.start();
         } catch (SlickException e) {
@@ -82,11 +82,11 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isAct()) {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
-            
-            if(!player.getStopTime()){
+
+            if (!player.getStopTime()) {
                 spawnEnemy -= 0.5;
             }
-            if (spawnEnemy <= 0){
+            if (spawnEnemy <= 0) {
                 enemies.add(new Enemy(enemyX, enemyY));
                 spawnEnemy = 100;
             }
@@ -120,7 +120,7 @@ public class AskWhyPie extends BasicGame {
             if (listener.keyValue() == Input.KEY_Z) {
                 if (fireballTimer >= 99.9f) {
                     fireball = new Fireball(player);
-		    fireballTimer = 0.0f;
+                    fireballTimer = 0.0f;
                 }
                 listener.keyPressed(666, 'i');
             }
@@ -146,18 +146,24 @@ public class AskWhyPie extends BasicGame {
             if (player.pausePower < 100) {
                 player.pausePower += 0.1f;
             }
-	    
-	    fireballTimer += 0.25f;
-	    if (fireballTimer > 100.0f)
-		fireballTimer = 100.0f;
-            if (handleAct.getMap() != null && handleAct.getMap().getTileId((int)player.getBorderLeft()/32, (int)player.getBorderUp()/32, handleAct.getMap().getLayerIndex(finLayer)) != 0){
-                handleAct.stopMusic(map);
-                finLayer = "pie layer";
-                map = 1;
-                GameStatus.gameState = 5;
+
+            fireballTimer += 0.5f;
+            if (fireballTimer > 100.0f) {
+                fireballTimer = 100.0f;
+            }
+            if (handleAct.getMap() != null && handleAct.getMap().getTileId((int) player.getBorderLeft() / 32, (int) player.getBorderUp() / 32, handleAct.getMap().getLayerIndex(finLayer)) != 0) {
+                if (finLayer.contains("pie")) {
+                    GameStatus.gameState = 6;
+
+                } else {
+                    handleAct.stopMusic(map);
+                    finLayer = "pie layer";
+                    map = 1;
+                    GameStatus.gameState = 5;
+                }
             }
         }
-        if(GameStatus.gameState == 5){
+        if (GameStatus.gameState == 5) {
             container.getInput().addKeyListener(listener);
             if (Input.KEY_ENTER == listener.keyValue()) {
                 enemies = new ArrayList<Enemy>();
@@ -192,30 +198,30 @@ public class AskWhyPie extends BasicGame {
         } else if (GameStatus.isBeginActOne()) {
             m.stopMenuMusic();
             b.drawBeginnings(g);
-        } else if(GameStatus.gameState == 5){
-          fs.drawFinaleScreen(g);  
+        } else if (GameStatus.gameState == 5) {
+            fs.drawFinaleScreen(g);
         } else if (GameStatus.isAct()) {
             handleAct.setMap(maps[map]);
             handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
             g.drawString((int) player.pausePower + " paussiPower", 1100, 80);
-            g.drawString((int)fireballTimer + " fireball", 1100, 110);
+            g.drawString((int) fireballTimer + " fireball", 1100, 110);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
-	    
-	    if (player.getStopTime()) {
-		Color color = g.getColor();
-		g.setColor(Color.darkGray);
-		
-		for (int y=0; y<5; ++y) {
-		    for (int x=0; x<5; ++x) {
-			
-			g.drawString("PAUSSI", x*200+70, y*170+40);
-		    }
-		}
-		g.setColor(color);
-	    }
-	    
+
+            if (player.getStopTime()) {
+                Color color = g.getColor();
+                g.setColor(Color.darkGray);
+
+                for (int y = 0; y < 5; ++y) {
+                    for (int x = 0; x < 5; ++x) {
+
+                        g.drawString("PAUSSI", x * 200 + 70, y * 170 + 40);
+                    }
+                }
+                g.setColor(color);
+            }
+
             if (fireball != null) {
                 boolean success = fireball.draw(g);
 
@@ -240,8 +246,8 @@ public class AskWhyPie extends BasicGame {
                     player.setHealth(player.getHealth() - 1);
                 }
             }
-	    
-	    
+
+
         } else if (GameStatus.isCredits()) {
             Image im = new Image("data/background.jpg");
             container.getInput().addKeyListener(listener);
@@ -255,16 +261,18 @@ public class AskWhyPie extends BasicGame {
         } else if (GameStatus.isGameOver()) {
             Image im = new Image("data/background.jpg");
             Image ko = new Image("data/gameover.png");
+            map = 0;
+            finLayer = "dildo layer";
+            handleAct.setMap(maps[map]);
             im.draw(0, 0, container.getWidth(), container.getHeight());
             ko.draw(0, 0, 1000, 500);
             if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
                 enemies = new ArrayList<Enemy>();
-		map = 0;
-		finLayer = "dildo layer";
                 handleAct.stopMusic(map);
                 m = new Menu(container);
                 GameStatus.gameState = 0;
             }
+
 
 
         }
