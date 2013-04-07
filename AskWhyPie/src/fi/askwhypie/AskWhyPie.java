@@ -3,6 +3,7 @@ package fi.askwhypie;
 import java.util.ArrayList;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -174,7 +175,20 @@ public class AskWhyPie extends BasicGame {
             g.drawString((int) player.pausePower + " paussiPower", 1100, 80);
             g.drawString((int)fireballTimer + " fireball", 1100, 110);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
-
+	    
+	    if (player.getStopTime()) {
+		Color color = g.getColor();
+		g.setColor(Color.darkGray);
+		
+		for (int y=0; y<5; ++y) {
+		    for (int x=0; x<5; ++x) {
+			
+			g.drawString("PAUSSI", x*200+70, y*170+40);
+		    }
+		}
+		g.setColor(color);
+	    }
+	    
             if (fireball != null) {
                 boolean success = fireball.draw(g);
 
@@ -198,9 +212,9 @@ public class AskWhyPie extends BasicGame {
                 if (e.checkCollision(player)) {
                     player.setHealth(player.getHealth() - 2);
                 }
-
-
             }
+	    
+	    
         } else if (GameStatus.isCredits()) {
             Image im = new Image("data/background.jpg");
             container.getInput().addKeyListener(listener);
