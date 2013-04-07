@@ -255,10 +255,13 @@ public class AskWhyPie extends BasicGame {
             Image im = new Image("data/background.jpg");
             container.getInput().addKeyListener(listener);
             im.draw(0, 0, container.getWidth(), container.getHeight());
-            g.drawString("Pisteet Kurisulle hienoista efekteistä," + "\n"
-                    + "Hallolle, JMorrowlle, Numppalle ja Mazalle kiitokset."
-                    + "\n" + "Tää on placeholder.", 100, 100);
-            if (Input.KEY_Q == listener.keyValue()) {
+            Color oldColor = g.getColor();
+            g.setColor(new Color(Color.black));
+            g.drawString("Made by team AskWhy: " + "\n\n"
+                    + "Ville Knuuttila\nMatti Tahvanainen\nKristian Pulkkinen\nJoel Nummelin\nJoni Hauhia"+
+                    "\n\n\nHackathon 6.-7.4.2013", 220, 270);
+            g.setColor(oldColor);
+            if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
                 GameStatus.gameState = 0;
             }
         } else if (GameStatus.isGameOver()) {
