@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -153,6 +154,8 @@ public class AskWhyPie extends BasicGame {
             }
             if (handleAct.getMap() != null && handleAct.getMap().getTileId((int) player.getBorderLeft() / 32, (int) player.getBorderUp() / 32, handleAct.getMap().getLayerIndex(finLayer)) != 0) {
                 if (finLayer.contains("pie")) {
+                    handleAct.stopMusic(map);
+                    map = 0;
                     GameStatus.gameState = 6;
 
                 } else {
@@ -272,9 +275,20 @@ public class AskWhyPie extends BasicGame {
                 m = new Menu(container);
                 GameStatus.gameState = 0;
             }
-
-
-
+        } else if (GameStatus.gameState == 6) {
+            Image im = new Image("data/background.jpg");
+            Image ko = new Image("data/madeit.png");
+            map = 0;
+            finLayer = "dildo layer";
+            handleAct.setMap(maps[map]);
+            im.draw(0, 0, container.getWidth(), container.getHeight());
+            ko.draw(0, 0, 1000, 500);
+            if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
+                enemies = new ArrayList<Enemy>();
+                handleAct.stopMusic(map);
+                m = new Menu(container);
+                GameStatus.gameState = 0;
+            }
         }
     }
 }
