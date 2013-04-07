@@ -25,6 +25,10 @@ public class AskWhyPie extends BasicGame {
     ListenerForKeyes listener;
     String[] maps;
     int map;
+    float spawnEnemy;
+    int enemyX;
+    int enemyY;
+    String finLayer;
 
     public AskWhyPie() {
         super("AskWhy game");
@@ -58,11 +62,15 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isBeginActOne()) {
             container.getInput().addKeyListener(listener);
             if (Input.KEY_ENTER == listener.keyValue()) {
+                spawnEnemy = 100;
+                enemyX = 512;
+                enemyY = 386;
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
                 for (int i = 0; i < 16; i++) {
-                    enemies.add(new Enemy(512, 386));
+                    enemies.add(new Enemy(enemyX, enemyY));
                 }
+                finLayer = "dildo layer";
                 container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
@@ -70,22 +78,28 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isAct()) {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
-	    
-	    if (fireball != null) {
-		fireball.move();
-		
-		Enemy hittedEnemy = null;
-		
-		for (Enemy enemy : enemies) {
-		    if (fireball.checkCollision(enemy)) {
-			fireball.hits();
-			hittedEnemy = enemy;
-		    }
-		}
-		if (hittedEnemy != null)
-		    enemies.remove(hittedEnemy);
-	    }
 
+            spawnEnemy -= 0.5;
+            if (spawnEnemy <= 0){
+                enemies.add(new Enemy(enemyX, enemyY));
+                spawnEnemy = 100;
+            }
+
+            if (fireball != null) {
+                fireball.move();
+
+                Enemy hittedEnemy = null;
+
+                for (Enemy enemy : enemies) {
+                    if (fireball.checkCollision(enemy)) {
+                        fireball.hits();
+                        hittedEnemy = enemy;
+                    }
+                }
+                if (hittedEnemy != null) {
+                    enemies.remove(hittedEnemy);
+                }
+            }
 
             if (player.getHealth() <= 0) {
                 GameStatus.gameState = 4;
@@ -121,9 +135,9 @@ public class AskWhyPie extends BasicGame {
                 handleAct.stopMusic(map);
                 map = 0;
             }
-            if (player.getStopTime()){
+            if (player.getStopTime()) {
                 player.pausePower -= 0.7;
-                if(player.pausePower <= 0){
+                if (player.pausePower <= 0) {
                     player.continueTime();
                 }
             }
@@ -134,6 +148,12 @@ public class AskWhyPie extends BasicGame {
 	    fireballTimer += 0.15f;
 	    if (fireballTimer > 100.0f)
 		fireballTimer = 100.0f;
+            if (handleAct.getMap() != null && handleAct.getMap().getTileId((int)player.getBorderLeft()/32, (int)player.getBorderUp()/32, handleAct.getMap().getLayerIndex(finLayer)) != 0){
+                handleAct.stopMusic(map);
+                finLayer = "pie layer";
+                map = 1;
+                GameStatus.gameState = 2;
+            }
         }
 
 
@@ -152,7 +172,7 @@ public class AskWhyPie extends BasicGame {
             handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
-            g.drawString((int)player.pausePower + " pausePower", 1100, 80);
+            g.drawString((int) player.pausePower + " paussiPower", 1100, 80);
 	    g.drawString((int)fireballTimer + " fireball", 1100, 120);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
@@ -192,20 +212,19 @@ public class AskWhyPie extends BasicGame {
             if (Input.KEY_Q == listener.keyValue()) {
                 GameStatus.gameState = 0;
             }
-        }
-        else if (GameStatus.isGameOver()) {
+        } else if (GameStatus.isGameOver()) {
             Image im = new Image("data/background.jpg");
             Image ko = new Image("data/gameover.png");
             im.draw(0, 0, container.getWidth(), container.getHeight());
-            ko.draw(0,0, 1000, 500);
+            ko.draw(0, 0, 1000, 500);
             if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
                 enemies = new ArrayList<Enemy>();
                 handleAct.stopMusic(map);
                 m = new Menu(container);
                 GameStatus.gameState = 0;
+            }
+
+
         }
-
-
     }
-}
 }
