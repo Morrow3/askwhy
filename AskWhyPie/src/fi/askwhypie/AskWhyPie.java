@@ -58,6 +58,7 @@ public class AskWhyPie extends BasicGame {
         }
         if (GameStatus.isAct()){
             player.move(1.5f);
+	    player.checkWallCollision(handleAct.getMap());
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
                 player.setFacing(listener.arrowKeyValue());
             if (listener.keyValue() == Input.KEY_X)

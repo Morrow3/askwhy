@@ -20,4 +20,8 @@ public class HandleAct {
     public void drawAct() {
         image.render(0, 0);
     }
+    
+    public TiledMap getMap() {
+	return image;
+    }
 }

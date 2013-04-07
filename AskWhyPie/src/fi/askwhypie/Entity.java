@@ -8,6 +8,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.tiled.TiledMap;
 
 public class Entity {
 
@@ -249,8 +250,6 @@ public class Entity {
             return false;
         }
 
-
-
         float up1 = this.getBorderUp();
         float down1 = this.getBorderDown();
         float left1 = this.getBorderLeft();
@@ -269,6 +268,62 @@ public class Entity {
             }
         }
         return false;
+    }
+    
+    public void checkWallCollision(TiledMap map) {
+	//Ruudun reunojen tarkistus
+	if (canHitWall) {
+	    if (getBorderLeft() < 0)
+		x = 0 - getHitboxLeft();
+	    if (getBorderRight() > 1024)
+		x = 1024 - getHitboxRight();
+	    if (getBorderUp() < 18)
+		y = 18 - getHitboxUp();
+	    if (getBorderDown() > 768)
+		y = 768 - getHitboxDown();
+	    
+	    if (map == null)
+		return;
+	    
+	    
+	    int tileID = 0;
+	    int layer = map.getLayerIndex("Tile Layer 3");
+	    
+	    if (facing == UP) {
+		tileID = map.getTileId((int)getX()/32, ((int)getY()/32+1), layer);
+		
+		if (tileID != 0) {
+		    y = ((int)getY()/32+1) * 32;
+		}
+	    } else if (facing == DOWN) {
+		tileID = map.getTileId((int)getX()/32, ((int)getY()/32+1), layer);
+		
+		if (tileID != 0) {
+		    y = ((int)getY()/32) * 32;
+		}
+	    } else if (facing == LEFT) {
+		tileID = map.getTileId(((int)getX()/32+1), (int)getY()/32, layer);
+		
+		if (tileID != 0) {
+		    x = ((int)getX()/32+1) * 32;
+		}
+	    } else if (facing == RIGHT) {
+		tileID = map.getTileId(((int)getX()/32+1), (int)getY()/32, layer);
+		
+		if (tileID != 0) {
+		    x = ((int)getX()/32) * 32;
+		}
+	    }
+	    
+	    
+	    
+	    
+	    //int tileID = map.getTileId((int)getX()/32, (int)getY()/32, map.getLayerIndex("Tile Layer 3"));
+	    //System.out.println(tileID);
+	    //String blocked = map.getTileProperty(tileID, "", "false");
+	    //System.out.println(blocked);
+	}
+	
     }
 
     public static Image[] createImageArray(String directory, float rotation) {
