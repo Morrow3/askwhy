@@ -79,7 +79,9 @@ public class AskWhyPie extends BasicGame {
                 player.stopTime();
             }
             if (listener.keyValue() == Input.KEY_Z) {
-                fireball = new Fireball(player);
+                if (fireball == null || fireball.getState() == 2){
+                    fireball = new Fireball(player);
+                }
                 listener.keyPressed(999, 'i');
             }
             if (listener.keyValue() == Input.KEY_O) {
