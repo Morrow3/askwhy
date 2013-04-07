@@ -43,6 +43,7 @@ public class AskWhyPie extends BasicGame {
     public static void main(String[] args) {
         try {
             AppGameContainer app = new AppGameContainer(new AskWhyPie());
+	    app.setTargetFrameRate(60);
             app.setDisplayMode(1312, 768, false);
             app.start();
         } catch (SlickException e) {
@@ -120,11 +121,6 @@ public class AskWhyPie extends BasicGame {
                 }
                 listener.keyPressed(666, 'i');
             }
-            if (listener.keyValue() == Input.KEY_O) {
-                if (fireball != null) {
-                    fireball.hits();
-                }
-            }
             if (listener.keyValue() == Input.KEY_Q) {
                 handleAct.stopMusic(map);
                 container.exit();
@@ -148,7 +144,7 @@ public class AskWhyPie extends BasicGame {
                 player.pausePower += 0.05;
             }
 	    
-	    fireballTimer += 0.15f;
+	    fireballTimer += 0.25f;
 	    if (fireballTimer > 100.0f)
 		fireballTimer = 100.0f;
             if (handleAct.getMap() != null && handleAct.getMap().getTileId((int)player.getBorderLeft()/32, (int)player.getBorderUp()/32, handleAct.getMap().getLayerIndex(finLayer)) != 0){
