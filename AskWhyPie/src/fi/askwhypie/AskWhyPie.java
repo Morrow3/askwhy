@@ -162,7 +162,7 @@ public class AskWhyPie extends BasicGame {
                     handleAct.stopMusic(map);
                     finLayer = "pie layer";
                     map = 1;
-                    GameStatus.gameState = 6;
+                    GameStatus.gameState = 5;
                 }
             }
         }
@@ -246,7 +246,7 @@ public class AskWhyPie extends BasicGame {
                     e.checkWallCollision(handleAct.getMap());
                 }
                 if (e.checkCollision(player)) {
-                    player.setHealth(player.getHealth() - 0);
+                    player.setHealth(player.getHealth() - 1);
                 }
             }
 
