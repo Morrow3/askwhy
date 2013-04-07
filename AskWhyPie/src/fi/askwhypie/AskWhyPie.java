@@ -280,11 +280,15 @@ public class AskWhyPie extends BasicGame {
 	    fireball = null;
             Image im = new Image("data/background.jpg");
             Image ko = new Image("data/madeit.png");
+            Image di = new Image("data/map/dildo.png");
+            Image pi = new Image("data/map/ladyv2.png");
             map = 0;
             finLayer = "dildo layer";
             handleAct.setMap(maps[map]);
             im.draw(0, 0, container.getWidth(), container.getHeight());
             ko.draw(0, 0, 1000, 500);
+            pi.draw(800, 10, 544, 430);
+            di.draw(990, 170, 184, 450);
             if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
                 enemies = new ArrayList<Enemy>();
                 handleAct.stopMusic(map);
