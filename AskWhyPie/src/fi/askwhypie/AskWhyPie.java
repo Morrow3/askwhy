@@ -21,6 +21,7 @@ public class AskWhyPie extends BasicGame {
     Player player;
     ArrayList<Enemy> enemies;
     Fireball fireball;
+    FinaleScreen fs;
     float fireballTimer;
     ListenerForKeyes listener;
     String[] maps;
@@ -56,6 +57,7 @@ public class AskWhyPie extends BasicGame {
         m = new Menu(container);
         b = new Beginning(container);
         handleAct = new HandleAct(container);
+        fs = new FinaleScreen(container);
     }
 
     @Override
@@ -151,6 +153,29 @@ public class AskWhyPie extends BasicGame {
                 handleAct.stopMusic(map);
                 finLayer = "pie layer";
                 map = 1;
+                GameStatus.gameState = 5;
+            }
+        }
+        if(GameStatus.gameState == 5){
+            container.getInput().addKeyListener(listener);
+            if (Input.KEY_ENTER == listener.keyValue()) {
+                enemies = new ArrayList<Enemy>();
+                spawnEnemy = 100;
+                enemyX = 368;
+                enemyY = 480;
+                player.setX(80);
+                player.setY(480);
+                player.setSpeed(0.5f);
+                for (int i = 0; i < 8; i++) {
+                    enemies.add(new Enemy(enemyX, enemyY));
+                }
+                enemyX = 500;
+                enemyY = 128;
+                for (int i = 0; i < 8; i++) {
+                    enemies.add(new Enemy(enemyX, enemyY));
+                }
+                finLayer = "pie layer";
+                container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
         }
@@ -166,6 +191,8 @@ public class AskWhyPie extends BasicGame {
         } else if (GameStatus.isBeginActOne()) {
             m.stopMenuMusic();
             b.drawBeginnings(g);
+        } else if(GameStatus.gameState == 5){
+          fs.drawFinaleScreen(g);  
         } else if (GameStatus.isAct()) {
             handleAct.setMap(maps[map]);
             handleAct.drawAct(map);
