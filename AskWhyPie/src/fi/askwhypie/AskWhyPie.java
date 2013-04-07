@@ -4,6 +4,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -100,9 +101,16 @@ public class AskWhyPie extends BasicGame {
             }
             
         } else if (GameStatus.isCredits()) {
+            Image im = new Image("data/background.jpg");
+            container.getInput().addKeyListener(listener);
+            im.draw(0, 0, container.getWidth(), container.getHeight());
             g.drawString("Pisteet Kurisulle hienoista efekteistä," + "\n" +
                     "Hallolle, JMorrowlle, Numppalle ja Mazalle kiitokset." +
                     "\n" + "Tää on placeholder.", 100, 100);
+            if (Input.KEY_Q == listener.keyValue()) {
+                GameStatus.gameState = 0;
+            }
+            
         }
     }
 }
