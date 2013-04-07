@@ -24,12 +24,10 @@ public class HandleAct {
         image.render(0, 0);
         playMusic(i);
     }
-<<<<<<< HEAD
     
     public TiledMap getMap() {
 	return image;
     }
-=======
    
     public void playMusic(int i) {
         if(!musics[i].playing())
@@ -44,6 +42,4 @@ public class HandleAct {
             
         }
     }
-    
->>>>>>> 69e875d3a9bac4a035328c0845c80a2be2f1cd6c
 }
