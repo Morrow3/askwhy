@@ -11,7 +11,6 @@ public class Player extends Entity {
     
     public static final int STATE_WALK = 0;
     public static final int STATE_DIE = 1;
-    public Fireball fb;
     
     
     public Player(float x, float y) {
@@ -51,10 +50,7 @@ public class Player extends Entity {
     public void stopTime(){
         
     }
-    public void fireBall(){
-        fb = new Fireball(getX(), getY());
-        fb.setFacing(getFacing());
-    }
+    
     
 
 }

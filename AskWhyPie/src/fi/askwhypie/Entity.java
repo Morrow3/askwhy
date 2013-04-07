@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -49,7 +50,11 @@ public class Entity {
 
         animations = new ArrayList<Animation[]>();
     }
-
+    
+    public void draw(Graphics g) {
+	g.drawAnimation(getAnimation(), x, y);
+    }
+    
     public void setAnimation(Animation anim, int facing, int state) {
         while (animations.size() <= state) {
             animations.add(new Animation[4]);

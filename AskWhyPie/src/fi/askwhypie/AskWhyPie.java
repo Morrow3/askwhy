@@ -17,6 +17,7 @@ public class AskWhyPie extends BasicGame {
     Beginning b;
     HandleAct handleAct;
     Player player;
+    Fireball fireball;
     ListenerForKeyes listener;
     String[] maps;
     int map;
@@ -60,12 +61,13 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isAct()){
             player.move(1.5f);
 	    player.checkWallCollision(handleAct.getMap());
+	    
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
                 player.setFacing(listener.arrowKeyValue());
             if (listener.keyValue() == Input.KEY_X)
                 player.stopTime();
             if (listener.keyValue() == Input.KEY_Z)
-                player.fireBall();
+                fireball = new Fireball(player);
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
             if (listener.keyValue() == Input.KEY_D) {
@@ -94,11 +96,17 @@ public class AskWhyPie extends BasicGame {
             g.drawString(player.getHealth()+" health", 1100, 50 );
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
             
-            if (player.fb != null){
-                g.drawAnimation(player.fb.getAnimation(), player.fb.getX(), player.fb.getY());
-                player.fb.move(5f);
+            if (fireball != null){
+                fireball.draw(g);
+                fireball.move(5f);
+		
+//		g.drawLine(fireball.getBorderLeft(), 0, fireball.getBorderLeft(), 1000);
+//		g.drawLine(fireball.getBorderRight(), 0, fireball.getBorderRight(), 1000);
+//		g.drawLine(0, fireball.getBorderUp(), 1000, fireball.getBorderUp());
+//		g.drawLine(0, fireball.getBorderDown(), 1000, fireball.getBorderDown());
             }
-            
         }
+	
+	
     }
 }

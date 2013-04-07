@@ -4,9 +4,10 @@ import org.newdawn.slick.Animation;
 
 public class Bullet extends Entity {
     
-    public static final int STATE_FLY = 0,
-			    STATE_HIT = 1,
-			    STATE_VANISH = 2;
+    public static final int STATE_START = 0,
+			    STATE_FLY = 1,
+			    STATE_HIT = 2,
+			    STATE_VANISH = 3;
     
     
     public Bullet(float x, float y, float width, float height) {
