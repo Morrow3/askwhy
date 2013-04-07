@@ -270,60 +270,60 @@ public class Entity {
         return false;
     }
     
-    public void checkWallCollision(TiledMap map) {
-	//Ruudun reunojen tarkistus
+    public void checkWallCollision(TiledMap tiledMap) {
 	if (canHitWall) {
+	    //Ruudun reunojen tarkistus
 	    if (getBorderLeft() < 0)
 		x = 0 - getHitboxLeft();
 	    if (getBorderRight() > 1024)
 		x = 1024 - getHitboxRight();
-	    if (getBorderUp() < 18)
-		y = 18 - getHitboxUp();
+	    if (getBorderUp() < 15)
+		y = 15 - getHitboxUp();
 	    if (getBorderDown() > 768)
 		y = 768 - getHitboxDown();
+	    
+	    
+	    boolean[][] map = createWallMap(tiledMap);
 	    
 	    if (map == null)
 		return;
 	    
-	    
-	    int tileID = 0;
-	    int layer = map.getLayerIndex("Tile Layer 3");
+	    int up = (int)getBorderUp() / 32;
+	    int down = (int)((getBorderDown()-1) / 32);
+	    int left = (int)(getBorderLeft()) / 32;
+	    int right = (int)(getBorderRight()-1) / 32;
 	    
 	    if (facing == UP) {
-		tileID = map.getTileId((int)getX()/32, ((int)getY()/32+1), layer);
-		
-		if (tileID != 0) {
-		    y = ((int)getY()/32+1) * 32;
-		}
+		if (map[left][up] || map[right][up])
+		    y = up * 32;
 	    } else if (facing == DOWN) {
-		tileID = map.getTileId((int)getX()/32, ((int)getY()/32+1), layer);
-		
-		if (tileID != 0) {
-		    y = ((int)getY()/32) * 32;
-		}
+		if (map[left][down] || map[right][down])
+		    y = down * 32 - getHitboxDown();
 	    } else if (facing == LEFT) {
-		tileID = map.getTileId(((int)getX()/32+1), (int)getY()/32, layer);
-		
-		if (tileID != 0) {
-		    x = ((int)getX()/32+1) * 32;
-		}
+		if (map[left][up] || map[left][down])
+		    x = left * 32 + width - getHitboxLeft();
 	    } else if (facing == RIGHT) {
-		tileID = map.getTileId(((int)getX()/32+1), (int)getY()/32, layer);
-		
-		if (tileID != 0) {
-		    x = ((int)getX()/32) * 32;
-		}
+		if (map[right][up] || map[right][down])
+		    x = right * 32 - width + (width - getHitboxRight());
 	    }
-	    
-	    
-	    
-	    
-	    //int tileID = map.getTileId((int)getX()/32, (int)getY()/32, map.getLayerIndex("Tile Layer 3"));
-	    //System.out.println(tileID);
-	    //String blocked = map.getTileProperty(tileID, "", "false");
-	    //System.out.println(blocked);
 	}
 	
+    }
+    
+    
+    public boolean[][] createWallMap(TiledMap map) {
+	if (map == null)
+	    return null;
+	
+	int layer = map.getLayerIndex("Tile Layer 3");
+	boolean[][] wallMap = new boolean[32][24];
+	
+	for (int j=0; j<wallMap[0].length; ++j)
+	    for (int i=0; i<wallMap.length; ++i)
+		if (map.getTileId(i, j, layer) != 0)
+		    wallMap[i][j] = true;
+	
+	return wallMap;
     }
 
     public static Image[] createImageArray(String directory, float rotation) {

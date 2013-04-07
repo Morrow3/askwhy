@@ -17,6 +17,9 @@ public class Player extends Entity {
     public Player(float x, float y) {
 	super(x, y, 32, 64);
 	super.setHitboxUp(super.getHeight() / 2);
+	super.setHitboxDown(super.getHitboxDown()-10);
+	super.setHitboxLeft(super.getHitboxLeft()+10);
+	super.setHitboxRight(super.getHitboxRight()-10);
 	super.setCanHitWall(true);
 	
 	initPlayer();
