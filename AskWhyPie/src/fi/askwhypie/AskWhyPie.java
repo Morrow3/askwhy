@@ -1,5 +1,6 @@
 package fi.askwhypie;
 
+import java.util.ArrayList;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -17,10 +18,9 @@ public class AskWhyPie extends BasicGame {
     Menu m;
     Beginning b;
     HandleAct handleAct;
-    
     Player player;
+    ArrayList<Enemy> enemy;
     Fireball fireball;
-    
     ListenerForKeyes listener;
     String[] maps;
     int map;
@@ -30,6 +30,7 @@ public class AskWhyPie extends BasicGame {
         listener = new ListenerForKeyes();
         maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
         map = 0;
+        enemy = new ArrayList<Enemy>();
 
     }
 
@@ -52,45 +53,54 @@ public class AskWhyPie extends BasicGame {
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-        if (GameStatus.isBeginActOne()){
+        if (GameStatus.isBeginActOne()) {
             container.getInput().addKeyListener(listener);
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
+                enemy.add(new Enemy(512, 378));
+                enemy.add(new Enemy(512, 400));
+                enemy.add(new Enemy(512, 432));
+                enemy.add(new Enemy(512, 464));
                 container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
         }
-        if (GameStatus.isAct()){
+        if (GameStatus.isAct()) {
             player.move(1.5f);
-	    player.checkWallCollision(handleAct.getMap());
-	    
-	    
-	    
-            if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
+            player.checkWallCollision(handleAct.getMap());
+
+
+
+            if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN || listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT) {
                 player.setFacing(listener.arrowKeyValue());
-            if (listener.keyValue() == Input.KEY_X)
+            }
+            if (listener.keyValue() == Input.KEY_X) {
                 player.stopTime();
+            }
             if (listener.keyValue() == Input.KEY_Z) {
                 fireball = new Fireball(player);
-		listener.keyPressed(999, 'i');
-	    }
-	    if (listener.keyValue() == Input.KEY_O)
-		if (fireball != null)
-		    fireball.hits();
-            if (listener.keyValue() == Input.KEY_Q)
+                listener.keyPressed(999, 'i');
+            }
+            if (listener.keyValue() == Input.KEY_O) {
+                if (fireball != null) {
+                    fireball.hits();
+                }
+            }
+            if (listener.keyValue() == Input.KEY_Q) {
                 container.exit();
+            }
             if (listener.keyValue() == Input.KEY_D) {
                 handleAct.stopMusic(map);
                 map = 1;
             }
-            if (listener.keyValue() == Input.KEY_A){
+            if (listener.keyValue() == Input.KEY_A) {
                 handleAct.stopMusic(map);
                 map = 0;
             }
         }
-	
-	
+
+
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
@@ -105,33 +115,43 @@ public class AskWhyPie extends BasicGame {
             handleAct.setMap(maps[map]);
             handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
-            g.drawString(player.getHealth()+" health", 1100, 50 );
+            g.drawString(player.getHealth() + " health", 1100, 50);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
-            
-            if (fireball != null){
+
+            if (fireball != null) {
                 fireball.move();
                 boolean success = fireball.draw(g);
-		
+
 //		g.drawLine(fireball.getBorderLeft(), 0, fireball.getBorderLeft(), 1000);
 //		g.drawLine(fireball.getBorderRight(), 0, fireball.getBorderRight(), 1000);
 //		g.drawLine(0, fireball.getBorderUp(), 1000, fireball.getBorderUp());
 //		g.drawLine(0, fireball.getBorderDown(), 1000, fireball.getBorderDown());
-		
-		if (!success)
-		    fireball = null;
+
+                if (!success) {
+                    fireball = null;
+                }
+            }
+            if (!player.getStopTime()){
+                for(Enemy e : enemy){
+                    e.draw(g);
+                    e.setFacing();
+                    e.move(2f);
+                    e.checkWallCollision(handleAct.getMap());
+                }
+                
             }
         } else if (GameStatus.isCredits()) {
             Image im = new Image("data/background.jpg");
             container.getInput().addKeyListener(listener);
             im.draw(0, 0, container.getWidth(), container.getHeight());
-            g.drawString("Pisteet Kurisulle hienoista efekteistä," + "\n" +
-                    "Hallolle, JMorrowlle, Numppalle ja Mazalle kiitokset." +
-                    "\n" + "Tää on placeholder.", 100, 100);
+            g.drawString("Pisteet Kurisulle hienoista efekteistä," + "\n"
+                    + "Hallolle, JMorrowlle, Numppalle ja Mazalle kiitokset."
+                    + "\n" + "Tää on placeholder.", 100, 100);
             if (Input.KEY_Q == listener.keyValue()) {
                 GameStatus.gameState = 0;
             }
         }
-	
-	
+
+
     }
 }
