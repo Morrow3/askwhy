@@ -144,7 +144,7 @@ public class AskWhyPie extends BasicGame {
                 player.pausePower -= 0.7;
             }
             if (player.pausePower < 100) {
-                player.pausePower += 0.05;
+                player.pausePower += 0.1f;
             }
 	    
 	    fireballTimer += 0.25f;
@@ -237,7 +237,7 @@ public class AskWhyPie extends BasicGame {
                     e.checkWallCollision(handleAct.getMap());
                 }
                 if (e.checkCollision(player)) {
-                    player.setHealth(player.getHealth() - 2);
+                    player.setHealth(player.getHealth() - 1);
                 }
             }
 	    
