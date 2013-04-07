@@ -110,6 +110,7 @@ public class AskWhyPie extends BasicGame {
 
             if (player.getHealth() <= 0) {
                 GameStatus.gameState = 4;
+		fireball = null;
             }
 
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN || listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT) {
@@ -128,14 +129,6 @@ public class AskWhyPie extends BasicGame {
             if (listener.keyValue() == Input.KEY_Q) {
                 handleAct.stopMusic(map);
                 container.exit();
-            }
-            if (listener.keyValue() == Input.KEY_D) {
-                handleAct.stopMusic(map);
-                map = 1;
-            }
-            if (listener.keyValue() == Input.KEY_A) {
-                handleAct.stopMusic(map);
-                map = 0;
             }
             if (player.getStopTime()) {
                 if (player.pausePower <= 0) {
@@ -157,7 +150,6 @@ public class AskWhyPie extends BasicGame {
                     handleAct.stopMusic(map);
                     map = 0;
                     GameStatus.gameState = 6;
-
                 } else {
                     handleAct.stopMusic(map);
                     finLayer = "pie layer";
@@ -202,6 +194,7 @@ public class AskWhyPie extends BasicGame {
             m.stopMenuMusic();
             b.drawBeginnings(g);
         } else if (GameStatus.gameState == 5) {
+	    fireball = null;
             fs.drawFinaleScreen(g);
         } else if (GameStatus.isAct()) {
             handleAct.setMap(maps[map]);
@@ -279,6 +272,7 @@ public class AskWhyPie extends BasicGame {
                 GameStatus.gameState = 0;
             }
         } else if (GameStatus.gameState == 6) {
+	    fireball = null;
             Image im = new Image("data/background.jpg");
             Image ko = new Image("data/madeit.png");
             Image di = new Image("data/map/dildo.png");
