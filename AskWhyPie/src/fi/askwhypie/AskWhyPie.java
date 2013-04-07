@@ -70,10 +70,7 @@ public class AskWhyPie extends BasicGame {
             player.checkWallCollision(handleAct.getMap());
 
             if (player.getHealth() <= 0) {
-                enemy = new ArrayList<Enemy>();
-                handleAct.stopMusic(map);
-                m = new Menu(container);
-                GameStatus.gameState = 0;
+                GameStatus.gameState = 4;
             }
 
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN || listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT) {
@@ -159,10 +156,6 @@ public class AskWhyPie extends BasicGame {
                 if (e.checkCollision(player)) {
                     player.setHealth(player.getHealth() - 2);
                 }
-                if(player.getHealth()==0)
-                {
-                    GameStatus.gameState = 4;
-                }
 
 
             }
@@ -182,7 +175,10 @@ public class AskWhyPie extends BasicGame {
             Image ko = new Image("data/gameover.png");
             im.draw(0, 0, container.getWidth(), container.getHeight());
             ko.draw(0,0, 1000, 500);
-            if (Input.KEY_Q == listener.keyValue()) {
+            if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
+                enemy = new ArrayList<Enemy>();
+                handleAct.stopMusic(map);
+                m = new Menu(container);
                 GameStatus.gameState = 0;
         }
 
