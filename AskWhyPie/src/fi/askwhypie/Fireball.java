@@ -80,6 +80,7 @@ public class Fireball extends Bullet {
     
     public void hits() {
 	if (getState() != STATE_HIT) {
+	    setCanHitEnemy(false);
 	    setSpeed(0f);
 	    setState(STATE_HIT);
 

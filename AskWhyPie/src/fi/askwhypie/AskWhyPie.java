@@ -21,6 +21,7 @@ public class AskWhyPie extends BasicGame {
     Player player;
     ArrayList<Enemy> enemies;
     Fireball fireball;
+    float fireballTimer;
     ListenerForKeyes listener;
     String[] maps;
     int map;
@@ -31,6 +32,7 @@ public class AskWhyPie extends BasicGame {
         maps = new String[]{"data/map/grasslevel.tmx", "data/map/level3.tmx"};
         map = 0;
         enemies = new ArrayList<Enemy>();
+	fireballTimer = 100.0f;
 
     }
 
@@ -71,14 +73,13 @@ public class AskWhyPie extends BasicGame {
 	    
 	    if (fireball != null) {
 		fireball.move();
-
+		
 		Enemy hittedEnemy = null;
 		
 		for (Enemy enemy : enemies) {
 		    if (fireball.checkCollision(enemy)) {
 			fireball.hits();
 			hittedEnemy = enemy;
-			fireball.setCanHitEnemy(false);
 		    }
 		}
 		if (hittedEnemy != null)
@@ -97,8 +98,9 @@ public class AskWhyPie extends BasicGame {
                 player.stopTime();
             }
             if (listener.keyValue() == Input.KEY_Z) {
-                if (fireball == null || fireball.getState() == 2) {
+                if (fireballTimer >= 99.9f) {
                     fireball = new Fireball(player);
+		    fireballTimer = 0.0f;
                 }
                 listener.keyPressed(666, 'i');
             }
@@ -128,6 +130,10 @@ public class AskWhyPie extends BasicGame {
             if (player.pausePower < 100) {
                 player.pausePower += 0.05;
             }
+	    
+	    fireballTimer += 0.15f;
+	    if (fireballTimer > 100.0f)
+		fireballTimer = 100.0f;
         }
 
 
@@ -147,6 +153,7 @@ public class AskWhyPie extends BasicGame {
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
             g.drawString((int)player.pausePower + " pausePower", 1100, 80);
+	    g.drawString((int)fireballTimer + " fireball", 1100, 120);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
             if (fireball != null) {
