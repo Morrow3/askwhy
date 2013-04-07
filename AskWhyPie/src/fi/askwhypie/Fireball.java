@@ -6,8 +6,8 @@ import org.newdawn.slick.Image;
 public class Fireball extends Bullet {
 
     private static final int FRAME_DURATION = 250;
-    private static final float START_SPEED = 1.5f,
-			       FLY_SPEED = 2f;
+    private static final float START_SPEED = 2.0f,
+			       FLY_SPEED = 3.0f;
 
     public Fireball(Player player) {
         super(0, 0, 128, 128);
