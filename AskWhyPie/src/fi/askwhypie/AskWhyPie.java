@@ -259,6 +259,8 @@ public class AskWhyPie extends BasicGame {
             ko.draw(0, 0, 1000, 500);
             if (Input.KEY_Q == listener.keyValue() || Input.KEY_ENTER == listener.keyValue()) {
                 enemies = new ArrayList<Enemy>();
+		map = 0;
+		finLayer = "dildo layer";
                 handleAct.stopMusic(map);
                 m = new Menu(container);
                 GameStatus.gameState = 0;
