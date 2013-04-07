@@ -27,6 +27,7 @@ public class AskWhyPie extends BasicGame {
     float spawnEnemy;
     int enemyX;
     int enemyY;
+    String finLayer;
 
     public AskWhyPie() {
         super("AskWhy game");
@@ -67,6 +68,7 @@ public class AskWhyPie extends BasicGame {
                 for (int i = 0; i < 16; i++) {
                     enemies.add(new Enemy(enemyX, enemyY));
                 }
+                finLayer = "dildo layer";
                 container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
@@ -140,6 +142,12 @@ public class AskWhyPie extends BasicGame {
             if (player.pausePower < 100) {
                 player.pausePower += 0.05;
             }
+            if (handleAct.getMap() != null && handleAct.getMap().getTileId((int)player.getBorderLeft()/32, (int)player.getBorderUp()/32, handleAct.getMap().getLayerIndex(finLayer)) != 0){
+                handleAct.stopMusic(map);
+                finLayer = "pie layer";
+                map = 1;
+                GameStatus.gameState = 2;
+            }
         }
 
 
@@ -158,7 +166,7 @@ public class AskWhyPie extends BasicGame {
             handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth() + " health", 1100, 50);
-            g.drawString((int) player.pausePower + " pausePower", 1100, 80);
+            g.drawString((int) player.pausePower + " paussiPower", 1100, 80);
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
 
             if (fireball != null) {
