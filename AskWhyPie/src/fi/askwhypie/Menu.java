@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -23,6 +24,7 @@ public class Menu {
     private Image credits;
     private Image options;
     private MenuListener ml;
+    private Music menuMusic;
         
     
     
@@ -36,6 +38,7 @@ public class Menu {
         quit = new Image("data/exitv1.png");
         credits = new Image("data/creditsv1.png");
         options = new Image("data/optionsv1.png");
+        menuMusic = new Music("data/music/eka.wav");
     }
     
     public void drawMenu() throws SlickException
@@ -65,6 +68,17 @@ public class Menu {
             }
             g.drawString(ml.getSelected() + "", 100, 100);
         }
+    }
+    
+    public void playMenuMusic() {
+        if(!menuMusic.playing())
+        {
+            menuMusic.play();
+        }
+    }
+    
+    public void stopMenuMusic() {
+        menuMusic.release();
     }
     
     private Image getImage(int i){

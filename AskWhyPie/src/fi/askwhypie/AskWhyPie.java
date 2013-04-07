@@ -53,6 +53,7 @@ public class AskWhyPie extends BasicGame {
             if (Input.KEY_ENTER == listener.keyValue()) {
                 player = new Player(256, 256);
                 player.setSpeed(0.5f);
+                container.getInput().removeAllKeyListeners();
                 GameStatus.gameState = 2;
             }
         }
@@ -67,6 +68,14 @@ public class AskWhyPie extends BasicGame {
                 player.fireBall();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
+            if (listener.keyValue() == Input.KEY_D) {
+                handleAct.stopMusic(map);
+                map = 1;
+            }
+            if (listener.keyValue() == Input.KEY_A){
+                handleAct.stopMusic(map);
+                map = 0;
+            }
         }
     }
 
@@ -74,11 +83,13 @@ public class AskWhyPie extends BasicGame {
 
         if (GameStatus.isInGameMenu()) {
             m.drawWholeMenu(g);
+            m.playMenuMusic();
         } else if (GameStatus.isBeginActOne()) {
+            m.stopMenuMusic();
             b.drawBeginnings(g);
         } else if (GameStatus.isAct()) {
             handleAct.setMap(maps[map]);
-            handleAct.drawAct();
+            handleAct.drawAct(map);
             g.drawString("Player:", 1075, 20);
             g.drawString(player.getHealth()+" health", 1100, 50 );
             g.drawAnimation(player.getAnimation(), player.getX(), player.getY());
