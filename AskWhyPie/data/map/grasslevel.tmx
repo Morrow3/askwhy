@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="pubdlcnt6" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt6.png" width="3072" height="2560"/>
+  <image source="pubdlcnt6.png" width="3072" height="2560"/>
  </tileset>
  <tileset firstgid="7681" name="pubdlcnt" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt.png" width="672" height="701"/>
+  <image source="pubdlcnt.png" width="672" height="701"/>
  </tileset>
  <tileset firstgid="8122" name="pubdlcnt2" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt2.png" width="503" height="518"/>
+  <image source="pubdlcnt2.png" width="503" height="518"/>
  </tileset>
  <tileset firstgid="8362" name="pubdlcnt5" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt5.png" width="360" height="266"/>
+  <image source="pubdlcnt5.png" width="360" height="266"/>
  </tileset>
  <tileset firstgid="8450" name="pubdlcnt3" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt3.png" width="477" height="219"/>
+  <image source="pubdlcnt3.png" width="477" height="219"/>
  </tileset>
  <tileset firstgid="8534" name="pubdlcnt4" tilewidth="32" tileheight="32">
-  <image source="../Lataukset/pubdlcnt4.png" width="319" height="293"/>
+  <image source="pubdlcnt4.png" width="319" height="293"/>
  </tileset>
  <tileset firstgid="8615" name="dildo" tilewidth="32" tileheight="32">
   <image source="dildo.png" width="96" height="225"/>
