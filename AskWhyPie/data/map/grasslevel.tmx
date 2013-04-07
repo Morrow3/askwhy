@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="pubdlcnt6" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt6.png" width="3072" height="2560"/>
+  <image source="../Lataukset/pubdlcnt6.png" width="3072" height="2560"/>
  </tileset>
  <tileset firstgid="7681" name="pubdlcnt" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt.png" width="672" height="701"/>
+  <image source="../Lataukset/pubdlcnt.png" width="672" height="701"/>
  </tileset>
  <tileset firstgid="8122" name="pubdlcnt2" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt2.png" width="503" height="518"/>
+  <image source="../Lataukset/pubdlcnt2.png" width="503" height="518"/>
  </tileset>
  <tileset firstgid="8362" name="pubdlcnt5" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt5.png" width="360" height="266"/>
+  <image source="../Lataukset/pubdlcnt5.png" width="360" height="266"/>
  </tileset>
  <tileset firstgid="8450" name="pubdlcnt3" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt3.png" width="477" height="219"/>
+  <image source="../Lataukset/pubdlcnt3.png" width="477" height="219"/>
  </tileset>
  <tileset firstgid="8534" name="pubdlcnt4" tilewidth="32" tileheight="32">
-  <image source="pubdlcnt4.png" width="319" height="293"/>
+  <image source="../Lataukset/pubdlcnt4.png" width="319" height="293"/>
+ </tileset>
+ <tileset firstgid="8615" name="dildo" tilewidth="32" tileheight="32">
+  <image source="dildo.png" width="96" height="225"/>
  </tileset>
  <layer name="Tile Layer 1" width="32" height="24">
   <data encoding="base64" compression="zlib">
@@ -31,6 +34,11 @@
  <layer name="Tile Layer 3" width="32" height="24">
   <data encoding="base64" compression="zlib">
    eJztls1PE0EYh+eEoOUoCDWZaSTBmwrEBEOtFIma2mqqEQ6c+TwT1LMg/xPycQYVOCp+Hf2kRwU/wjOZneym2e62y9QTv+TJbruz7286fd95R4hk+iuFGFJCDMK1wLUfBlTCoCFawecFrMIarEvzfQqPAtyGO4FrHkYc+m/ityX9z6+534Y0Ho9gDMa9a8HzLTueQ7U+yPgx5Sb6/4jx17nxL2LMghLiMTxRzfHXudEeEXuJZ6mMEMsJ/f/E+OvcOB8TuztTv98ufq3Ea4PTcCYm9s+Q+dn6DOpqTBwrvZ6dcA66oDvmvRaen6oaY+tzR5rfo/eOUZiEKZiGGZiFuap3P3rjs3XO96wytRmUrVMd65M0tfoQ5gPjbE4+rXp3X/q1fVzpWJXA//OMuIvK5ORzzyPtyOtE4bJ5X2/+u9JNZXL+lvLv/4dyyuT8A2VyXteGvbe9Wq/FkOP5aF+7Z1Vq7Jm6T9q1SFJjYeeDDSgSq6T8PauWdJ+0a5FE9nzwEl5J/3wwERHvEnv/5Qb2/yi9west7ME7eC+jzwcX8c3Cdcg5mMNnvL7AV/gG32V4f+7Cqx8GoAB3oejAX/e6X3AAh/BbhvfnG3gNQx4uQI+j9be9rlZ/7vV8SlzvwX24An2O/HWv61CN9eegjgDVSG0g
+  </data>
+ </layer>
+ <layer name="dildo layer" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg5YJ3iwNq/cYDt3zLA9o+CUTAKRsEoGAWjYBSMgoEHABJbAnc=
   </data>
  </layer>
 </map>
