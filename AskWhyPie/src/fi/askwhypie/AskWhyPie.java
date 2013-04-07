@@ -130,14 +130,6 @@ public class AskWhyPie extends BasicGame {
                 handleAct.stopMusic(map);
                 container.exit();
             }
-            if (listener.keyValue() == Input.KEY_D) {
-                handleAct.stopMusic(map);
-                map = 1;
-            }
-            if (listener.keyValue() == Input.KEY_A) {
-                handleAct.stopMusic(map);
-                map = 0;
-            }
             if (player.getStopTime()) {
                 if (player.pausePower <= 0) {
                     player.continueTime();
