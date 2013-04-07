@@ -19,6 +19,9 @@ public class GameStatus {
     public static boolean isCredits(){
         return gameState == 3;
     }
+    public static boolean isGameOver(){
+        return gameState == 4;
+    }
     
     
     

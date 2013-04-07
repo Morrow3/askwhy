@@ -159,6 +159,10 @@ public class AskWhyPie extends BasicGame {
                 if (e.checkCollision(player)) {
                     player.setHealth(player.getHealth() - 2);
                 }
+                if(player.getHealth()==0)
+                {
+                    GameStatus.gameState = 4;
+                }
 
 
             }
@@ -173,7 +177,16 @@ public class AskWhyPie extends BasicGame {
                 GameStatus.gameState = 0;
             }
         }
+        else if (GameStatus.isGameOver()) {
+            Image im = new Image("data/background.jpg");
+            Image ko = new Image("data/gameover.png");
+            im.draw(0, 0, container.getWidth(), container.getHeight());
+            ko.draw(0,0, 1000, 500);
+            if (Input.KEY_Q == listener.keyValue()) {
+                GameStatus.gameState = 0;
+        }
 
 
     }
+}
 }
