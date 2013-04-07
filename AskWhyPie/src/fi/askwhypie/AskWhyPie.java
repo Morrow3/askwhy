@@ -60,6 +60,7 @@ public class AskWhyPie extends BasicGame {
         b = new Beginning(container);
         handleAct = new HandleAct(container);
         fs = new FinaleScreen(container);
+	container.setShowFPS(false);
     }
 
     @Override

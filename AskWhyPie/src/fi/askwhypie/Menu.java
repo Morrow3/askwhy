@@ -66,7 +66,7 @@ public class Menu {
             } else {
                 drawButton(getImage(i), 700, i * 100, false);
             }
-            g.drawString(ml.getSelected() + "", 100, 100);
+          //  g.drawString(ml.getSelected() + "", 100, 100);
         }
     }
     
