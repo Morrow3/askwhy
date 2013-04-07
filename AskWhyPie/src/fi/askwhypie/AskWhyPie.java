@@ -70,6 +70,7 @@ public class AskWhyPie extends BasicGame {
             player.checkWallCollision(handleAct.getMap());
 
             if (player.getHealth() <= 0){
+                enemy = new ArrayList<Enemy>();
                 handleAct.stopMusic(map);
                 m = new Menu(container);
                 GameStatus.gameState = 0;
