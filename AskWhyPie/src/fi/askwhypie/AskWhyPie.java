@@ -78,8 +78,10 @@ public class AskWhyPie extends BasicGame {
         if (GameStatus.isAct()) {
             player.move(1.5f);
             player.checkWallCollision(handleAct.getMap());
-
-            spawnEnemy -= 0.5;
+            
+            if(!player.getStopTime()){
+                spawnEnemy -= 0.5;
+            }
             if (spawnEnemy <= 0){
                 enemies.add(new Enemy(enemyX, enemyY));
                 spawnEnemy = 100;
@@ -136,10 +138,11 @@ public class AskWhyPie extends BasicGame {
                 map = 0;
             }
             if (player.getStopTime()) {
-                player.pausePower -= 0.7;
                 if (player.pausePower <= 0) {
                     player.continueTime();
+                    listener.keyPressed(666, 'c');
                 }
+                player.pausePower -= 0.7;
             }
             if (player.pausePower < 100) {
                 player.pausePower += 0.05;
