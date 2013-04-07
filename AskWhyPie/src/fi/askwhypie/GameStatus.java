@@ -16,6 +16,9 @@ public class GameStatus {
     public static boolean isAct(){
         return gameState == 2;
     }
+    public static boolean isCredits(){
+        return gameState == 3;
+    }
     
     
     

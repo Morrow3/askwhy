@@ -99,6 +99,10 @@ public class AskWhyPie extends BasicGame {
                 player.fb.move(5f);
             }
             
+        } else if (GameStatus.isCredits()) {
+            g.drawString("Pisteet Kurisulle hienoista efekteistä," + "\n" +
+                    "Hallolle, JMorrowlle, Numppalle ja Mazalle kiitokset." +
+                    "\n" + "Tää on placeholder.", 100, 100);
         }
     }
 }
