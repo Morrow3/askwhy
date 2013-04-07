@@ -6,13 +6,14 @@ import org.newdawn.slick.Image;
 public class Fireball extends Bullet {
 
     private static final int FRAME_DURATION = 250;
-    private static final float SPEED = 1.5f;
+    private static final float START_SPEED = 1.2f,
+			       FLY_SPEED = 1.7f;
 
     public Fireball(Player player) {
         super(0, 0, 128, 128);
 	super.setFacing(player.getFacing());
         super.setCanHitEnemy(true);
-	super.setSpeed(SPEED);
+	super.setSpeed(START_SPEED);
 	super.setState(STATE_START);
 	
         initFireball(player);
@@ -66,8 +67,10 @@ public class Fireball extends Bullet {
     public Animation getAnimation() {
 	Animation animation = super.getAnimation();
 
-	if (getState() == STATE_START && animation.getFrame() == animation.getFrameCount() - 1)
+	if (getState() == STATE_START && animation.getFrame() == animation.getFrameCount() - 1) {
 	    setState(STATE_FLY);
+	    setSpeed(FLY_SPEED);
+	}
 	
 	if (getState() == STATE_HIT && animation.getFrame() == animation.getFrameCount() - 1)
 	    return null;
@@ -75,7 +78,7 @@ public class Fireball extends Bullet {
 	return animation;
     }
     
-    public void fireballHits() {
+    public void hits() {
 	if (getState() != STATE_HIT) {
 	    setSpeed(0f);
 	    setState(STATE_HIT);

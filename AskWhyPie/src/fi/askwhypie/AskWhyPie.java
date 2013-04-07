@@ -17,8 +17,10 @@ public class AskWhyPie extends BasicGame {
     Menu m;
     Beginning b;
     HandleAct handleAct;
+    
     Player player;
     Fireball fireball;
+    
     ListenerForKeyes listener;
     String[] maps;
     int map;
@@ -63,6 +65,8 @@ public class AskWhyPie extends BasicGame {
             player.move(1.5f);
 	    player.checkWallCollision(handleAct.getMap());
 	    
+	    
+	    
             if (listener.keyValue() == Input.KEY_UP || listener.keyValue() == Input.KEY_DOWN ||listener.keyValue() == Input.KEY_LEFT || listener.keyValue() == Input.KEY_RIGHT )
                 player.setFacing(listener.arrowKeyValue());
             if (listener.keyValue() == Input.KEY_X)
@@ -73,7 +77,7 @@ public class AskWhyPie extends BasicGame {
 	    }
 	    if (listener.keyValue() == Input.KEY_O)
 		if (fireball != null)
-		    fireball.fireballHits();
+		    fireball.hits();
             if (listener.keyValue() == Input.KEY_Q)
                 container.exit();
             if (listener.keyValue() == Input.KEY_D) {
